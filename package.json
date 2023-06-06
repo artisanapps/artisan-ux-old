@@ -1,5 +1,5 @@
 {
-  "name": "artisan-ui",
+  "name": "artisan-ux",
   "version": "0.0.1",
   "description": "Styled implementation of Material UI",
   "main": "index.ts",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/workofartisan/artisan-ui.git"
+    "url": "git+https://github.com/workofartisan/artisan-ux.git"
   },
   "author": "Hiren Patel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/workofartisan/artisan-ui/issues"
+    "url": "https://github.com/workofartisan/artisan-ux/issues"
   },
-  "homepage": "https://github.com/workofartisan/artisan-ui#readme",
+  "homepage": "https://github.com/workofartisan/artisan-ux#readme",
   "peerDependencies": {
     "@types/react": "^16.9.51",
     "react": "^16.13.0",
