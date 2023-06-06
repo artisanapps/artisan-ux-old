@@ -1,6 +1,20 @@
 import React from 'react';
-import {ButtonBarProps} from './ButtonBar.types';
 import {Button} from '@material-ui/core';
+
+export interface ButtonProps {
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+}
+
+export interface ButtonBarProps {
+  buttons: Array<ButtonProps>;
+  disabled?: boolean;
+  leftContent?: any;
+  leftAlign?: boolean;
+  endContent?: any;
+  disableButtonStyling?: boolean;
+}
 
 const ButtonBar = (props: ButtonBarProps) => {
   const {
