@@ -16,7 +16,7 @@
     "url": "https://github.com/workofartisan/artisan-ui/issues"
   },
   "homepage": "https://github.com/workofartisan/artisan-ui#readme",
-  "devDependencies": {
+  "peerDependencies": {
     "@types/react": "^16.9.51",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
