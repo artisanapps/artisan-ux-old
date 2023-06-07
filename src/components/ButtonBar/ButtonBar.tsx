@@ -38,13 +38,27 @@ const ButtonBar = (props: ButtonBarProps) => {
       {props.buttons.map((buttonProps, index) => {
         const isLast: boolean = index + 1 === buttonCount;
 
+        let variant: "outlined" | "contained" = "outlined";
+        if(!disableButtonStyling) {
+          if(leftAlign) {
+            if(index === 0) {
+              variant = "contained";
+            }
+          } else if (isLast) {
+            variant = "contained";
+          }
+        }
+
         return (
           <Button
             onClick={buttonProps.onClick}
             key={index}
-            variant={isLast && !disableButtonStyling ? "contained" : "outlined"}
+            variant={variant}
             color={"primary"}
-            style={{ marginRight: isLast ? "0rem" : "0.5rem" }}
+            style={{
+              marginRight: isLast ? "0rem" : "0.5rem",
+              textTransform: "none"
+            }}
             disabled={disabled || buttonProps.disabled}
             disableElevation={true}
             size={"small"}
