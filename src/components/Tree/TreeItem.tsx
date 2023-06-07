@@ -10,6 +10,7 @@ export interface TreeItemAdapter {
   id: string,
   primaryText: string,
   secondaryText: string,
+  childItems?: Array<TreeItemProps>,
 }
 
 export interface TreeItemProps {
@@ -41,7 +42,8 @@ const TreeItem = (props: TreeItemProps) => {
   const {
     id,
     primaryText,
-    secondaryText
+    secondaryText,
+    childItems
   } = props.adapter;
 
   const labelStyle: React.CSSProperties = { flex: 1 };
@@ -62,7 +64,8 @@ const TreeItem = (props: TreeItemProps) => {
           </div>
         </div>
       </div>
-    )
+    ),
+    children: childItems?.map(childItem => <TreeItem {...childItem} />)
   }
 
   return (

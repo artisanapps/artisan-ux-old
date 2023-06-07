@@ -5,7 +5,7 @@ const meta = {
   title: "ArtisanUX/Tree"
 }
 
-export default meta; 
+export default meta;
 
 export const Basic = (args: TreeProps) => (
   <Tree {...args} />
@@ -14,7 +14,8 @@ export const Basic = (args: TreeProps) => (
 Basic.args = {
   key: "basic-tree",
   items: [
-    { adapter: {
+    {
+      adapter: {
         id: "item1",
         primaryText: "Item 1",
         secondaryText: "Item 1 was our first item"
@@ -30,3 +31,46 @@ Basic.args = {
   ]
 }
 
+export const NestedList = (args: TreeProps) => (
+  <Tree {...args} />
+)
+
+NestedList.args = {
+  key: "nested-tree",
+  items: [
+    {
+      adapter: {
+        id: "item1",
+        primaryText: "Item 1",
+        secondaryText: "Item 1 was our first item"
+      }
+    },
+    {
+      adapter: {
+        id: "item2",
+        primaryText: "Item 2",
+        secondaryText: "Second item"
+      }
+    },
+    {
+      adapter: {
+        id: "group1",
+        primaryText: "Group 1",
+        childItems: [
+          {
+            adapter: {
+              id: "item1-1",
+              primaryText: "Subitem 1"
+            }
+          },
+          {
+            adapter: {
+              id: "item1-2",
+              primaryText: "Subitem 2"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
