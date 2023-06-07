@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import ButtonBar from './ButtonBar';
+import {CircularProgress, Typography} from '@material-ui/core';
 
 const meta = {
   component: ButtonBar,
@@ -18,4 +19,13 @@ Basic.args = {
     { label: "Cancel", onClick: () => alert("canceled")},
     { label: "Accept", onClick: () => alert("accepted!") }
   ]
+}
+
+export const LeftAlignedBasic = (args) => <ButtonBar {...args} />;
+LeftAlignedBasic.args = {
+  buttons: [
+    { label: "Accept", onClick: () => alert("accepted!") },
+    { label: "Cancel", onClick: () => alert("canceled")},
+  ],
+  leftAlign: true
 }
