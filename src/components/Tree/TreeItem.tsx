@@ -6,6 +6,7 @@ import {
   TreeItemProps as MUITreeItemProps
 } from "@material-ui/lab";
 import {useDrag, useDrop} from 'react-dnd';
+import {DragIndicator} from "@material-ui/icons";
 
 export interface TreeItemAdapter {
   id: string,
@@ -15,11 +16,12 @@ export interface TreeItemAdapter {
 }
 
 export interface TreeDragDropAdapter {
+  itemID: string;
   itemType: "group" | "item";
   dragData: any;
   canDrop: (droppedItemDragData: any) => boolean;
   onDrop: (droppedItemDragData: any) => void;
-  disableDrag: boolean;
+  disableDrag?: boolean;
 }
 
 export interface TreeItemProps {
@@ -53,6 +55,7 @@ const DraggableLabel = (props: {
   const styles = useTreeStyles();
 
   const {
+    itemID,
     itemType,
     dragData,
     canDrop,
@@ -73,7 +76,9 @@ const DraggableLabel = (props: {
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
     }),
-    canDrop: canDrop,
+    canDrop: (droppedItem) => {
+      return canDrop(droppedItem);
+    },
     drop: (droppedItem, monitor) => {
       onDrop(droppedItem);
       return droppedItem;
@@ -96,60 +101,68 @@ const DraggableLabel = (props: {
     <div ref={dragPreview} style={{ opacity: isDragging ? 0.5 : 1 }}>
       <div className={styles.treeItem} ref={drop} style={dropStyle}>
         {props.children}
+
+        {canDrag && (
+            <div id={itemID} ref={drag} style={{ cursor: "grab" }}>
+              <DragIndicator />
+            </div>
+        )}
       </div>
     </div>
   )
 }
 
-const TreeItem = (props: TreeItemProps) => {
+
+const ItemLabel = (props: TreeItemProps) => {
   const styles = useTreeStyles();
-  const theme = useTheme();
 
   const {
-    id,
     primaryText,
-    secondaryText,
-    childItems
+    secondaryText
   } = props.adapter;
 
-  const {
-    dragData,
-    canDrop,
-    disableDrag
-  } = props.dragDropAdapter;
-
-  const isGroup = ![null, undefined].includes(childItems);
-
-  const [] = useDrag(() => ({
-    type: isGroup ? "group" : "item",
-    item: dragData
-  }))
+  const isDraggable = Boolean(props.dragDropAdapter);
 
   const labelStyle: React.CSSProperties = { flex: 1 };
 
-  const treeItemProps: MUITreeItemProps = {
-    nodeId: id,
-    label: (
+  const labelBody = (
+      <div style={labelStyle}>
+        <PrimaryText primaryText={primaryText} />
+
+        {Boolean(secondaryText) && (
+            <Typography variant={"body2"} className={styles.secondaryText}>
+              {secondaryText}
+            </Typography>
+        )}
+      </div>
+  );
+
+  return isDraggable ? (
+      <DraggableLabel adapter={props.dragDropAdapter}>
+        { labelBody }
+      </DraggableLabel>
+  ) : (
       <div>
         <div className={styles.treeItem}>
-          <div style={labelStyle}>
-            <PrimaryText primaryText={primaryText} />
-
-            {Boolean(secondaryText) && (
-              <Typography variant={"body2"} className={styles.secondaryText}>
-                {secondaryText}
-              </Typography>
-            )}
-          </div>
+          {labelBody}
         </div>
       </div>
-    ),
+  );
+}
+
+const TreeItem = (props: TreeItemProps) => {
+  const {
+    id,
+    childItems
+  } = props.adapter;
+
+  const treeItemProps: MUITreeItemProps = {
+    nodeId: id,
+    label: <ItemLabel {...props} />,
     children: childItems?.map(childItem => <TreeItem {...childItem} />)
   }
 
-  return (
-    <MUITreeItem {...treeItemProps} />
-  );
+  return <MUITreeItem {...treeItemProps} />;
 }
 
 export default TreeItem;

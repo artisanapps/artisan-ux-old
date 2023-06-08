@@ -1,19 +1,30 @@
 import React from 'react';
 import TreeItem, {TreeItemProps} from './TreeItem';
 import {TreeView} from '@material-ui/lab';
+import TreeDragAndDropProvider from "./TreeDragAndDropProvider";
 
 export interface TreeProps {
-  key: string;
+  treeID: string;
   items: Array<TreeItemProps>,
 }
 
-const Tree = (props: TreeProps) => {
-  const { key, items } = props;
+const TreeContent = (props: TreeProps) => {
+  const { treeID, items } = props;
 
   return (
-    <div id={key}>
+    <TreeDragAndDropProvider rootElementID={treeID}>
+      {items.map(item => (<TreeItem {...item} />))}
+    </TreeDragAndDropProvider>
+  )
+}
+
+const Tree = (props: TreeProps) => {
+  const { treeID } = props;
+
+  return (
+    <div id={treeID}>
       <TreeView>
-        {items.map(item => (<TreeItem {...item} />))}
+        <TreeContent {...props} />
       </TreeView>
     </div>
   )
