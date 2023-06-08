@@ -90,6 +90,18 @@ DraggableTree.args = {
         id: "item1",
         primaryText: "Item 1",
         secondaryText: "Item 1 was our first item"
+      },
+      dragDropAdapter: {
+        itemID: "item1",
+        itemType: "item",
+        dragData: {
+          itemID: 1,
+          payload: {
+            name: "Item 1"
+          }
+        },
+        canDrop: (droppedItemDragData) => true,
+        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 1`)
       }
     },
     {
@@ -97,52 +109,37 @@ DraggableTree.args = {
         id: "item2",
         primaryText: "Item 2",
         secondaryText: "Second item"
+      },
+      dragDropAdapter: {
+        itemID: "item2",
+        itemType: "item",
+        dragData: {
+          itemID: 2,
+          payload: {
+            name: "Item 2"
+          }
+        },
+        canDrop: (droppedItemDragData) => true,
+        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 2`)
       }
     },
     {
       adapter: {
-        id: "group1",
-        primaryText: "Group 1",
-        childItems: [
-          {
-            adapter: {
-              id: "item1-1",
-              primaryText: "Subitem 1",
-              secondaryText: "Summary sentence sub1"
-            },
-            dragDropAdapter: {
-              itemID: "item1-1",
-              itemType: "item",
-              dragData: {
-                itemID: 1,
-                payload: {
-                  name: "Subitem 1"
-                }
-              },
-              canDrop: (droppedItemDragData) => true,
-              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Subitem 1`)
-            }
-          },
-          {
-            adapter: {
-              id: "item1-2",
-              primaryText: "Subitem 2",
-              secondaryText: "Summary sentence sub2"
-            },
-            dragDropAdapter: {
-              itemID: "item1-2",
-              itemType: "item",
-              dragData: {
-                itemID: 2,
-                payload: {
-                  name: "Subitem 2"
-                }
-              },
-              canDrop: (droppedItemDragData) => true,
-              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Subitem 2`)
-            }
+        id: "item3",
+        primaryText: "Item 3",
+        secondaryText: "Third item"
+      },
+      dragDropAdapter: {
+        itemID: "item3",
+        itemType: "item",
+        dragData: {
+          itemID: 3,
+          payload: {
+            name: "Item 3"
           }
-        ]
+        },
+        canDrop: (droppedItemDragData) => true,
+        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 3`)
       }
     }
   ]
