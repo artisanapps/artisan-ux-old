@@ -1,4 +1,5 @@
-import Tree, {TreeProps} from './Tree';
+import Tree from './Tree';
+import {TreeProps} from "./Tree.types";
 
 const meta = {
   component: Tree,
@@ -113,11 +114,13 @@ DraggableTree.args = {
               itemID: "item1-1",
               itemType: "item",
               dragData: {
-                id: 1,
-                name: "Subitem 1"
+                itemID: 1,
+                payload: {
+                  name: "Subitem 1"
+                }
               },
               canDrop: (droppedItemDragData) => true,
-              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.name} on Subitem 1`)
+              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Subitem 1`)
             }
           },
           {
@@ -130,11 +133,13 @@ DraggableTree.args = {
               itemID: "item1-2",
               itemType: "item",
               dragData: {
-                id: 2,
-                name: "Subitem 2"
+                itemID: 2,
+                payload: {
+                  name: "Subitem 2"
+                }
               },
               canDrop: (droppedItemDragData) => true,
-              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.name} on Subitem 2`)
+              onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Subitem 2`)
             }
           }
         ]

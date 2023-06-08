@@ -1,12 +1,8 @@
 import React from 'react';
-import TreeItem, {TreeItemProps} from './TreeItem';
+import TreeItem from './TreeItem';
 import {TreeView} from '@material-ui/lab';
 import TreeDragAndDropProvider from "./TreeDragAndDropProvider";
-
-export interface TreeProps {
-  treeID: string;
-  items: Array<TreeItemProps>,
-}
+import {TreeProps} from "./Tree.types";
 
 const TreeContent = (props: TreeProps) => {
   const { treeID, items } = props;
