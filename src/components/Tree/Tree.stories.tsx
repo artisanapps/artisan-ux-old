@@ -60,13 +60,15 @@ NestedList.args = {
           {
             adapter: {
               id: "item1-1",
-              primaryText: "Subitem 1"
+              primaryText: "Subitem 1",
+              secondaryText: "Summary sentence sub1"
             }
           },
           {
             adapter: {
               id: "item1-2",
-              primaryText: "Subitem 2"
+              primaryText: "Subitem 2",
+              secondaryText: "Summary sentence sub2"
             }
           }
         ]
