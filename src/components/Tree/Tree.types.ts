@@ -8,6 +8,7 @@ export interface TreeItemAdapter {
   primaryText: string,
   secondaryText: string,
   childItems?: Array<TreeItemProps>,
+  actions?: Array<TreeItemActionProps>,
 }
 
 export interface TreeDragDropAdapter {
@@ -25,4 +26,9 @@ export interface TreeDragDropAdapter {
 export interface TreeItemProps {
   adapter: TreeItemAdapter;
   dragDropAdapter: TreeDragDropAdapter;
+}
+
+export interface TreeItemActionProps {
+  label: string;
+  onClick: () => void;
 }

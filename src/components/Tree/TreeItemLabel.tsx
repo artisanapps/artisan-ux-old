@@ -4,6 +4,7 @@ import {useDrag, useDrop} from "react-dnd";
 import React from "react";
 import {DragIndicator} from "@material-ui/icons";
 import {TreeDragDropAdapter, TreeItemProps} from "./Tree.types";
+import TreeItemActionMenu from "./TreeItemActionMenu";
 
 const PrimaryText = (props: {
   primaryText: string,
@@ -97,10 +98,12 @@ const TreeItemLabel = (props: TreeItemProps) => {
 
   const {
     primaryText,
-    secondaryText
+    secondaryText,
+      actions
   } = props.adapter;
 
   const isDraggable = Boolean(props.dragDropAdapter);
+  const hasActions = actions && actions.length > 0;
 
   const labelStyle: React.CSSProperties = { flex: 1 };
 
@@ -119,11 +122,15 @@ const TreeItemLabel = (props: TreeItemProps) => {
   return isDraggable ? (
     <DraggableLabel adapter={props.dragDropAdapter}>
       { labelBody }
+
+      {hasActions && <TreeItemActionMenu actions={actions} />}
     </DraggableLabel>
   ) : (
     <div>
       <div className={styles.treeItem}>
         {labelBody}
+
+        {hasActions && <TreeItemActionMenu actions={actions} />}
       </div>
     </div>
   );

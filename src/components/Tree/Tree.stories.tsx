@@ -144,3 +144,47 @@ DraggableTree.args = {
     }
   ]
 }
+
+export const ActionTree = (args: TreeProps) => (
+    <Tree {...args} />
+)
+
+ActionTree.args = {
+  treeID: "nested-tree",
+  items: [
+    {
+      adapter: {
+        id: "appl1",
+        primaryText: "Apple",
+        secondaryText: "One a day keeps the doctor away",
+        actions: [
+          {
+            label: "Cut",
+            onClick: () => alert("Finished cutting apple")
+          },
+          {
+            label: "Mash",
+            onClick: () => alert("Mashed into apple sauce")
+          }
+        ]
+      }
+    },
+    {
+      adapter: {
+        id: "item2",
+        primaryText: "Banana",
+        secondaryText: "Bananas!",
+        actions: [
+          {
+            label: "Peel",
+            onClick: () => alert("Naked banana")
+          },
+          {
+            label: "Throw on ground",
+            onClick: () => alert("User slipped!")
+          }
+        ]
+      }
+    }
+  ]
+}
