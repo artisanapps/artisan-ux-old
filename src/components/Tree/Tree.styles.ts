@@ -13,6 +13,7 @@ const useTreeStyles = makeStyles((theme: Theme) =>
       borderLeft: `1px solid #CCC`,
     },
     clickable: {
+      color: theme.palette.primary.main,
       "&:hover": {
         textDecoration: "underline"
       }

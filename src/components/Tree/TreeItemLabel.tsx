@@ -1,4 +1,4 @@
-import {Typography, TypographyProps, useTheme} from "@material-ui/core";
+import {Link, Typography, TypographyProps, useTheme} from "@material-ui/core";
 import {useTreeStyles} from "./Tree.styles";
 import {useDrag, useDrop} from "react-dnd";
 import React from "react";
@@ -10,13 +10,30 @@ import {Skeleton} from "@material-ui/lab";
 
 const PrimaryText = (props: {
   primaryText: string,
+  primaryAction?: {
+    clickAction?: () => void;
+    navigateToURL?: string;
+  }
 }) => {
-  const { primaryText } = props;
+  const classes = useTreeStyles();
+
+  const { primaryText, primaryAction } = props;
+  const primaryClickAction = primaryAction?.clickAction;
+  const navigateToURL = primaryAction?.navigateToURL;
 
   const typographyProps: TypographyProps = {
     variant: "body1",
-    children: (
-      <span>
+    children: Boolean(navigateToURL) ? (
+      <Link href={navigateToURL}>
+        <span className={classes.clickable}>
+          { primaryText }
+        </span>
+      </Link>
+    ) : (
+      <span
+        onClick={primaryClickAction}
+        className={Boolean(primaryClickAction) ? classes.clickable : null}
+      >
         { primaryText }
       </span>
     )
@@ -102,7 +119,8 @@ const TreeItemLabel = (props: TreeItemProps) => {
   const {
     primaryText,
     secondaryText,
-      actions
+      actions,
+    primaryAction
   } = props.adapter;
 
   const isDraggable = Boolean(props.dragDropAdapter);
@@ -117,7 +135,7 @@ const TreeItemLabel = (props: TreeItemProps) => {
     </div>
   ) : (
     <div style={labelStyle}>
-      <PrimaryText primaryText={primaryText} />
+      <PrimaryText primaryText={primaryText} primaryAction={primaryAction} />
 
       {Boolean(secondaryText) && (
         <Typography variant={"body2"} className={styles.secondaryText}>

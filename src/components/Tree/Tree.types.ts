@@ -8,6 +8,10 @@ export interface TreeItemAdapter {
   id: string,
   primaryText: string,
   secondaryText: string,
+  primaryAction?: {
+    clickAction?: () => void;
+    navigateToURL?: string;
+  },
   childItems?: Array<TreeItemProps>,
   actions?: Array<TreeItemActionProps>,
 }

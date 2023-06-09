@@ -213,3 +213,33 @@ Pending.args = {
     }
   ]
 }
+
+export const ClickableItems = (args: TreeProps) => (
+  <Tree {...args} />
+)
+
+ClickableItems.args = {
+  treeID: "clickable-items",
+  items: [
+    {
+      adapter: {
+        id: "item1",
+        primaryText: "Hyperlink",
+        secondaryText: "Click title to navigate to Basic tree",
+        primaryAction: {
+          navigateToURL: "/?path=/story/artisanux-tree--basic"
+        }
+      }
+    },
+    {
+      adapter: {
+        id: "item2",
+        primaryText: "Click action",
+        secondaryText: "Click title to see alert message",
+        primaryAction: {
+          clickAction: () => alert("Clicked item 2")
+        }
+      }
+    }
+  ]
+}
