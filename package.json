@@ -26,8 +26,11 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
-    "@material-ui/pickers": "^3.3.10"
+    "@material-ui/pickers": "^3.3.10",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.4",
