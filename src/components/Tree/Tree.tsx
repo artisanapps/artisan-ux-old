@@ -2,8 +2,9 @@ import React from 'react';
 import TreeItem from './TreeItem';
 import {TreeView} from '@material-ui/lab';
 import TreeDragAndDropProvider from "./TreeDragAndDropProvider";
-import {TreeProps} from "./Tree.types";
+import {TreeContextProps, TreeProps} from "./Tree.types";
 import {KeyboardArrowDown, KeyboardArrowRight, KeyboardArrowUp} from "@material-ui/icons";
+import {TreeContext} from "./TreeContext";
 
 const TreeContent = (props: TreeProps) => {
   const { treeID, items } = props;
@@ -18,15 +19,21 @@ const TreeContent = (props: TreeProps) => {
 const Tree = (props: TreeProps) => {
   const { treeID } = props;
 
+  const context: TreeContextProps = {
+    pending: Boolean(props.pending)
+  };
+
   return (
-    <div id={treeID}>
-      <TreeView
-        defaultCollapseIcon={<KeyboardArrowDown />}
-        defaultExpandIcon={<KeyboardArrowRight />}
-      >
-        <TreeContent {...props} />
-      </TreeView>
-    </div>
+    <TreeContext.Provider value={context}>
+      <div id={treeID}>
+        <TreeView
+            defaultCollapseIcon={<KeyboardArrowDown />}
+            defaultExpandIcon={<KeyboardArrowRight />}
+        >
+          <TreeContent {...props} />
+        </TreeView>
+      </div>
+    </TreeContext.Provider>
   )
 }
 

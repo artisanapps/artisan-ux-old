@@ -188,3 +188,28 @@ ActionTree.args = {
     }
   ]
 }
+
+export const Pending = (args: TreeProps) => (
+    <Tree {...args} />
+)
+
+Pending.args = {
+  treeID: "basic-pending",
+  pending: true,
+  items: [
+    {
+      adapter: {
+        id: "item1",
+        primaryText: "Item 1",
+        secondaryText: "Item 1 was our first item"
+      }
+    },
+    {
+      adapter: {
+        id: "item2",
+        primaryText: "Item 2",
+        secondaryText: "Second item"
+      }
+    }
+  ]
+}

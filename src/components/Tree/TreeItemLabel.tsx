@@ -5,6 +5,8 @@ import React from "react";
 import {DragIndicator} from "@material-ui/icons";
 import {TreeDragDropAdapter, TreeItemProps} from "./Tree.types";
 import TreeItemActionMenu from "./TreeItemActionMenu";
+import {useTreeContext} from "./TreeContext";
+import {Skeleton} from "@material-ui/lab";
 
 const PrimaryText = (props: {
   primaryText: string,
@@ -95,6 +97,7 @@ const DraggableLabel = (props: {
 
 const TreeItemLabel = (props: TreeItemProps) => {
   const styles = useTreeStyles();
+  const pending = useTreeContext().pending;
 
   const {
     primaryText,
@@ -107,7 +110,12 @@ const TreeItemLabel = (props: TreeItemProps) => {
 
   const labelStyle: React.CSSProperties = { flex: 1 };
 
-  const labelBody = (
+  const labelBody = pending ? (
+    <div style={labelStyle}>
+      <Skeleton variant={"rect"} animation={"wave"} />
+      <Skeleton variant={"rect"} animation={"wave"} />
+    </div>
+  ) : (
     <div style={labelStyle}>
       <PrimaryText primaryText={primaryText} />
 

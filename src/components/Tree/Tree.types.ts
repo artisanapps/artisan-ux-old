@@ -1,6 +1,7 @@
 export interface TreeProps {
   treeID: string;
   items: Array<TreeItemProps>,
+  pending?: boolean;
 }
 
 export interface TreeItemAdapter {
@@ -31,4 +32,8 @@ export interface TreeItemProps {
 export interface TreeItemActionProps {
   label: string;
   onClick: () => void;
+}
+
+export interface TreeContextProps {
+  pending: boolean;
 }
