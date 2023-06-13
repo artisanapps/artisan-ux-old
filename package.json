@@ -24,7 +24,7 @@
   "peerDependencies": {
     "@types/react": "^16.9.51",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
