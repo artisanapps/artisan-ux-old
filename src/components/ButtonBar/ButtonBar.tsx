@@ -1,13 +1,13 @@
 import React from 'react';
 import {Button} from '@material-ui/core';
 
-export interface ButtonProps {
+interface ButtonProps {
   label: string;
   onClick: () => void;
   disabled?: boolean;
 }
 
-export interface ButtonBarProps {
+interface ButtonBarProps {
   buttons: Array<ButtonProps>;
   disabled?: boolean;
   leftContent?: any;
@@ -72,3 +72,4 @@ const ButtonBar = (props: ButtonBarProps) => {
 }
 
 export default ButtonBar;
+export { ButtonProps, ButtonBarProps };
