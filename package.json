@@ -1,6 +1,6 @@
 {
   "name": "artisan-ux",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Styled implementation of Material UI",
   "main": "src/index.ts",
   "scripts": {
