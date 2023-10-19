@@ -32,7 +32,7 @@ const PrimaryText = (props: {
     ) : (
       <span
         onClick={primaryClickAction}
-        className={Boolean(primaryClickAction) ? classes.clickable : null}
+        className={Boolean(primaryClickAction) ? classes.clickable : undefined}
       >
         { primaryText }
       </span>
