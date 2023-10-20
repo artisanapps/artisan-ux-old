@@ -1,4 +1,5 @@
 import React from 'react';
+import { PaletteColorOptions } from '@material-ui/core';
 
 interface ButtonProps {
     label: string;
@@ -53,4 +54,9 @@ interface TreeItemActionProps {
 
 declare const Tree: (props: TreeProps) => React.JSX.Element;
 
-export { ButtonBar, ButtonBarProps, ButtonProps, Tree };
+declare const ArtisanUXProvider: (props: {
+    primaryColor: PaletteColorOptions;
+    children?: any;
+}) => React.JSX.Element;
+
+export { ArtisanUXProvider, ButtonBar, ButtonBarProps, ButtonProps, Tree };
