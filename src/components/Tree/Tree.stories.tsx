@@ -1,5 +1,6 @@
 import Tree from './Tree';
 import {TreeProps} from "./Tree.types";
+import {ThemeProvider} from "../Provider/ArtisanUXProvider.stories";
 
 const meta = {
   component: Tree,
@@ -9,7 +10,9 @@ const meta = {
 export default meta;
 
 export const Basic = (args: TreeProps) => (
-  <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 Basic.args = {
@@ -33,7 +36,9 @@ Basic.args = {
 }
 
 export const NestedList = (args: TreeProps) => (
-  <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 NestedList.args = {
@@ -79,7 +84,9 @@ NestedList.args = {
 }
 
 export const DraggableTree = (args: TreeProps) => (
-    <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 DraggableTree.args = {
@@ -146,7 +153,9 @@ DraggableTree.args = {
 }
 
 export const ActionTree = (args: TreeProps) => (
-    <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 ActionTree.args = {
@@ -190,7 +199,9 @@ ActionTree.args = {
 }
 
 export const Pending = (args: TreeProps) => (
-    <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 Pending.args = {
@@ -215,7 +226,9 @@ Pending.args = {
 }
 
 export const ClickableItems = (args: TreeProps) => (
-  <Tree {...args} />
+    <ThemeProvider>
+      <Tree {...args} />
+    </ThemeProvider>
 )
 
 ClickableItems.args = {

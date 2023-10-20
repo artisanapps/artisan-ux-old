@@ -1,5 +1,5 @@
 import ButtonBar from './ButtonBar';
-import {ArtisanUXProvider} from "../Provider";
+import {ThemeProvider} from "../Provider/ArtisanUXProvider.stories";
 
 const meta = {
   component: ButtonBar,
@@ -10,7 +10,9 @@ const meta = {
 export default meta;
 
 export const Basic = (args) => (
-    <ButtonBar {...args} />
+    <ThemeProvider>
+      <ButtonBar {...args} />
+    </ThemeProvider>
 );
 
 Basic.args = {
@@ -20,24 +22,16 @@ Basic.args = {
   ]
 }
 
-export const LeftAlignedBasic = (args) => <ButtonBar {...args} />;
+export const LeftAlignedBasic = (args) => (
+    <ThemeProvider>
+      <ButtonBar {...args} />
+    </ThemeProvider>
+);
+
 LeftAlignedBasic.args = {
   buttons: [
     { label: "Accept", onClick: () => alert("accepted!") },
     { label: "Cancel", onClick: () => alert("canceled")},
   ],
   leftAlign: true
-}
-
-export const ThemedBasic = (args) => (
-    <ArtisanUXProvider primaryColor={{main: "#FFCC33"}}>
-      <ButtonBar {...args} />
-    </ArtisanUXProvider>
-);
-
-ThemedBasic.args = {
-  buttons: [
-    { label: "Cancel", onClick: () => alert("canceled")},
-    { label: "Accept", onClick: () => alert("accepted!") }
-  ]
 }
