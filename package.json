@@ -1,6 +1,6 @@
 {
   "name": "artisan-ux",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Styled implementation of Material UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.4",
