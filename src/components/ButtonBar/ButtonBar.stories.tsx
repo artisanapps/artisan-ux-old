@@ -1,6 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import ButtonBar from './ButtonBar';
-import {CircularProgress, Typography} from '@material-ui/core';
+import {ArtisanUXProvider} from "../Provider";
 
 const meta = {
   component: ButtonBar,
@@ -11,7 +10,7 @@ const meta = {
 export default meta;
 
 export const Basic = (args) => (
-  <ButtonBar {...args} />
+    <ButtonBar {...args} />
 );
 
 Basic.args = {
@@ -28,4 +27,17 @@ LeftAlignedBasic.args = {
     { label: "Cancel", onClick: () => alert("canceled")},
   ],
   leftAlign: true
+}
+
+export const ThemedBasic = (args) => (
+    <ArtisanUXProvider primaryColor={{main: "#FFCC33"}}>
+      <ButtonBar {...args} />
+    </ArtisanUXProvider>
+);
+
+ThemedBasic.args = {
+  buttons: [
+    { label: "Cancel", onClick: () => alert("canceled")},
+    { label: "Accept", onClick: () => alert("accepted!") }
+  ]
 }
