@@ -1,6 +1,6 @@
 {
   "name": "artisan-ux",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Styled implementation of Material UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
