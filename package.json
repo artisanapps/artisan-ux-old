@@ -26,7 +26,9 @@
     "react-dnd-html5-backend",
     "@emotion/react",
     "@emotion/styled",
+    "@mui/icons-material",
     "@mui/material",
+    "@mui/x-tree-view",
     "react",
     "react-dom",
     "@types/react"
@@ -36,7 +38,9 @@
     "react-dnd-html5-backend": "^16.0.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20",
+    "@mui/x-tree-view": "^6.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@types/react": "^18.2.42"

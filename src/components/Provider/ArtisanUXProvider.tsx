@@ -1,4 +1,4 @@
-import {createTheme, PaletteColorOptions, Theme, ThemeProvider } from "@material-ui/core";
+import {createTheme, PaletteColorOptions, ThemeProvider } from "@mui/material";
 import React from "react";
 
 const ArtisanUXProvider = (props: {

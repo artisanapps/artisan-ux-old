@@ -1,12 +1,11 @@
-import {Link, Typography, TypographyProps, useTheme} from "@material-ui/core";
+import {Link, Skeleton, Typography, TypographyProps, useTheme} from "@mui/material";
 import {useTreeStyles} from "./Tree.styles";
 import {useDrag, useDrop} from "react-dnd";
 import React from "react";
-import {DragIndicator} from "@material-ui/icons";
+import {DragIndicator} from "@mui/icons-material";
 import {TreeDragDropAdapter, TreeItemProps} from "./Tree.types";
 import TreeItemActionMenu from "./TreeItemActionMenu";
 import {useTreeContext} from "./TreeContext";
-import {Skeleton} from "@material-ui/lab";
 
 const PrimaryText = (props: {
   primaryText: string,
@@ -119,7 +118,7 @@ const TreeItemLabel = (props: TreeItemProps) => {
   const {
     primaryText,
     secondaryText,
-      actions,
+    actions,
     primaryAction
   } = props.adapter;
 
@@ -130,8 +129,8 @@ const TreeItemLabel = (props: TreeItemProps) => {
 
   const labelBody = pending ? (
     <div style={labelStyle}>
-      <Skeleton variant={"rect"} animation={"wave"} />
-      <Skeleton variant={"rect"} animation={"wave"} />
+      <Skeleton variant={"rectangular"} animation={"wave"} />
+      <Skeleton variant={"rectangular"} animation={"wave"} />
     </div>
   ) : (
     <div style={labelStyle}>
@@ -149,14 +148,14 @@ const TreeItemLabel = (props: TreeItemProps) => {
     <DraggableLabel adapter={props.dragDropAdapter}>
       { labelBody }
 
-      {hasActions && <TreeItemActionMenu actions={actions} />}
+      {hasActions && actions !== undefined && <TreeItemActionMenu actions={actions} />}
     </DraggableLabel>
   ) : (
     <div>
       <div className={styles.treeItem}>
         {labelBody}
 
-        {hasActions && <TreeItemActionMenu actions={actions} />}
+        {hasActions && actions !== undefined && <TreeItemActionMenu actions={actions} />}
       </div>
     </div>
   );

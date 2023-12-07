@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TreeItem as MUITreeItem,
   TreeItemProps as MUITreeItemProps
-} from "@material-ui/lab";
+} from "@mui/x-tree-view";
 import TreeItemLabel from "./TreeItemLabel";
 import {TreeItemProps} from "./Tree.types";
 
