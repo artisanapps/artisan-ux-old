@@ -1,5 +1,5 @@
 import {TextFieldProps} from './TextField.types';
-import {TextField as MUITextField} from '@mui/material/TextField'
+import {default as MUITextField} from '@mui/material/TextField'
 import {TextFieldChangeEvent} from './FormFields.types';
 
 const TextField = (props: TextFieldProps) => {

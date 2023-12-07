@@ -15,7 +15,8 @@ export const BasicTextField = () => {
   const textFieldProps: TextFieldProps = {
     id: "basic_text_field",
     value: value,
-    onChange: setValue
+    onChange: setValue,
+    label: "Basic Text Field"
   };
 
   return <TextField {...textFieldProps} />;
