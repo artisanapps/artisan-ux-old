@@ -22,6 +22,7 @@ const TextField = (props: TextFieldProps) => {
       color={"primary"}
       value={value}
       onChange={onValueChange}
+      fullWidth={true}
     />
   )
 }
