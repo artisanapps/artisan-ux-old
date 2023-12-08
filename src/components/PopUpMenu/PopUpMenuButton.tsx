@@ -1,6 +1,6 @@
 import React from "react";
 import {ButtonClickEvent} from "../../core/Events.types";
-import {IconButton} from "@material-ui/core";
+import {IconButton} from "@mui/material";
 
 const PopUpMenuButton = (props: {
   icon: any;

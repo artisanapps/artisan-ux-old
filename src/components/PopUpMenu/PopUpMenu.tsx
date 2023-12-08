@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {PopUpMenuItemProps, PopUpMenuProps} from "./PopUpMenu.types";
 import {ButtonClickEvent} from "../../core/Events.types";
-import {Menu, MenuProps} from "@material-ui/core";
+import {Menu, MenuProps} from "@mui/material";
 import PopUpMenuButton from "./PopUpMenuButton";
 import PopUpMenuItem from "./PopUpMenuItem";
 

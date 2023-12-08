@@ -2,7 +2,7 @@ import React from "react";
 import {TreeItemActionProps} from "./Tree.types";
 import {PopUpMenuItemProps} from "../PopUpMenu/PopUpMenu.types";
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
-import {MoreVert} from "@material-ui/icons";
+import {MoreVert} from "@mui/icons-material";
 
 const TreeItemActionMenu = (props: {
   actions: Array<TreeItemActionProps>

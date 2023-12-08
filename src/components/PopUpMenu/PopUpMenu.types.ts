@@ -1,4 +1,3 @@
-import {SvgIconComponent} from "@material-ui/icons";
 import {ButtonClickEvent} from "../../core/Events.types";
 
 export interface PopUpMenuItemProps {

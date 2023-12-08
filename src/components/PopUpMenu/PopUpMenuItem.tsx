@@ -1,7 +1,7 @@
 import React from "react";
 import {PopUpMenuItemProps} from "./PopUpMenu.types";
 import {ListItemClickEvent} from "../../core/Events.types";
-import {ListItemText, ListItemTextProps, MenuItem} from "@material-ui/core";
+import {ListItemText, ListItemTextProps, MenuItem} from "@mui/material";
 
 const PopUpMenuItem = (props: PopUpMenuItemProps) => {
   const {

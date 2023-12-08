@@ -1,9 +1,9 @@
 import React from 'react';
 import TreeItem from './TreeItem';
-import {TreeView} from '@material-ui/lab';
+import {TreeView} from '@mui/x-tree-view';
 import TreeDragAndDropProvider from "./TreeDragAndDropProvider";
 import {TreeContextProps, TreeProps} from "./Tree.types";
-import {KeyboardArrowDown, KeyboardArrowRight, KeyboardArrowUp} from "@material-ui/icons";
+import {KeyboardArrowDown, KeyboardArrowRight} from "@mui/icons-material";
 import {TreeContext} from "./TreeContext";
 
 const TreeContent = (props: TreeProps) => {
