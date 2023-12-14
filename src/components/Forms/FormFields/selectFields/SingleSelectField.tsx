@@ -1,7 +1,12 @@
 import React from 'react';
 import {SelectFieldOptionKey, SingleSelectFieldProps} from './SelectFields.types';
 import {Autocomplete} from '@mui/material';
-import {getSelectFieldOptionKey, getSelectFieldOptionLabel, renderSelectFieldInput} from './SelectFields.helpers';
+import {
+  getSelectFieldOptionKey,
+  getSelectFieldOptionLabel,
+  isSelectFieldOptionEqualToValue,
+  renderSelectFieldInput
+} from './SelectFields.helpers';
 
 
 const SingleSelectField = (props: SingleSelectFieldProps) => {
@@ -24,9 +29,9 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
       options={options}
       value={currentValue}
       onChange={onAutocompleteChange}
-      fullWidth={true}
       getOptionLabel={getSelectFieldOptionLabel}
       getOptionKey={getSelectFieldOptionKey}
+      isOptionEqualToValue={isSelectFieldOptionEqualToValue}
     />
   )
 }

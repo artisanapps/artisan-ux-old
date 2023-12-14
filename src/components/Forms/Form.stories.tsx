@@ -3,8 +3,13 @@ import {TextFieldProps} from './FormFields/TextFields/TextField.types';
 import TextField from './FormFields/TextFields/TextField';
 import {FormProps} from './Form.types';
 import Form from './Form';
-import {SelectFieldOption, SingleSelectFieldProps} from './FormFields/selectFields/SelectFields.types';
+import {
+  MultiSelectFieldProps,
+  SelectFieldOption,
+  SingleSelectFieldProps
+} from './FormFields/selectFields/SelectFields.types';
 import SingleSelectField from './FormFields/selectFields/SingleSelectField';
+import MultiSelectField from './FormFields/selectFields/MultiSelectField';
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -67,6 +72,33 @@ const BasicSingleSelectField = () => {
   return <SingleSelectField {...fieldProps} />;
 };
 
+const BasicMultiSelectField = () => {
+  const [values, setValues] = useState<Array<string>>([]);
+
+  const options: Array<SelectFieldOption> = [
+    {
+      label: "Red",
+      key: "red"
+    },
+    {
+      label: "Blue",
+      key: "blue"
+    },
+    {
+      label: "Sky Blue",
+      key: "sky_blue"
+    }
+  ];
+
+  const fieldProps: MultiSelectFieldProps = {
+    options: options,
+    currentValues: values,
+    onChange: setValues
+  };
+
+  return <MultiSelectField {...fieldProps} />;
+};
+
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
     sections: [
@@ -83,6 +115,7 @@ export const ComprehensiveForm = () => {
         subtitle: "This field contains our select fields",
         fields: [
           <BasicSingleSelectField />,
+          <BasicMultiSelectField />,
         ]
       }
     ]
