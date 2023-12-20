@@ -1,11 +1,6 @@
 import {MultiSelectFieldProps, SelectFieldOptionKey} from './SelectFields.types';
 import {Autocomplete} from '@mui/material';
-import {
-  getSelectFieldOptionKey,
-  getSelectFieldOptionLabel,
-  isSelectFieldOptionEqualToValue,
-  renderSelectFieldInput
-} from './SelectFields.helpers';
+import { renderSelectFieldInput } from './SelectFields.helpers';
 import React from 'react';
 
 const MultiSelectField = (props: MultiSelectFieldProps) => {
@@ -25,13 +20,10 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
 
   return (
     <Autocomplete
-      size={"small"}
-      multiple={true}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={options}
       value={currentValues}
       onChange={onAutocompleteChange}
-      filterSelectedOptions={true}
     />
   )
 }

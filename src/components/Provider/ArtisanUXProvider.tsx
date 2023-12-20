@@ -41,7 +41,9 @@ const ArtisanUXProvider = (props: {
             )
           },
           getOptionKey: (option: SelectFieldOption) => option.key,
-          isOptionEqualToValue: (option: SelectFieldOption, value: SelectFieldOption) => option.key === value.key
+          isOptionEqualToValue: (option: SelectFieldOption, value: SelectFieldOption) => option.key === value.key,
+          size: "small",
+          filterSelectedOptions: true
         }
       }
     }
