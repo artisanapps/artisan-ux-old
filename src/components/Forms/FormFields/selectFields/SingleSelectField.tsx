@@ -31,8 +31,6 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
       options={options}
       value={currentValue}
       onChange={onAutocompleteChange}
-      getOptionKey={getSelectFieldOptionKey}
-      isOptionEqualToValue={isSelectFieldOptionEqualToValue}
     />
   )
 }

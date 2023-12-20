@@ -31,8 +31,6 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
       options={options}
       value={currentValues}
       onChange={onAutocompleteChange}
-      getOptionKey={getSelectFieldOptionKey}
-      isOptionEqualToValue={isSelectFieldOptionEqualToValue}
       filterSelectedOptions={true}
     />
   )

@@ -39,7 +39,9 @@ const ArtisanUXProvider = (props: {
                 </Grid>
               </Box>
             )
-          }
+          },
+          getOptionKey: (option: SelectFieldOption) => option.key,
+          isOptionEqualToValue: (option: SelectFieldOption, value: SelectFieldOption) => option.key === value.key
         }
       }
     }
