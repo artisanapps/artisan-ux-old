@@ -10,6 +10,7 @@ import {
 } from './FormFields/selectFields/SelectFields.types';
 import SingleSelectField from './FormFields/selectFields/SingleSelectField';
 import MultiSelectField from './FormFields/selectFields/MultiSelectField';
+import {ArtisanUXProvider} from '../Provider';
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -51,6 +52,7 @@ const BasicSingleSelectField = () => {
   const options: Array<SelectFieldOption> = [
     {
       label: "Red",
+      subText: "Hex: #FF0000",
       key: "red"
     },
     {
@@ -125,5 +127,9 @@ export const ComprehensiveForm = () => {
     ]
   }
 
-  return <Form {...formProps} />;
+  return (
+    <ArtisanUXProvider primaryColor={{main: "#9e2d0b"}} >
+      <Form {...formProps} />
+    </ArtisanUXProvider>
+  )
 }

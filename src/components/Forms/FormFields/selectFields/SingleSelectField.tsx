@@ -26,11 +26,11 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
 
   return (
     <Autocomplete
+      size={"small"}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={options}
       value={currentValue}
       onChange={onAutocompleteChange}
-      getOptionLabel={getSelectFieldOptionLabel}
       getOptionKey={getSelectFieldOptionKey}
       isOptionEqualToValue={isSelectFieldOptionEqualToValue}
     />

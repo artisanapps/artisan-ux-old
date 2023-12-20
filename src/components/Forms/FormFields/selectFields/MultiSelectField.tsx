@@ -25,12 +25,12 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
 
   return (
     <Autocomplete
+      size={"small"}
       multiple={true}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={options}
       value={currentValues}
       onChange={onAutocompleteChange}
-      getOptionLabel={getSelectFieldOptionLabel}
       getOptionKey={getSelectFieldOptionKey}
       isOptionEqualToValue={isSelectFieldOptionEqualToValue}
       filterSelectedOptions={true}

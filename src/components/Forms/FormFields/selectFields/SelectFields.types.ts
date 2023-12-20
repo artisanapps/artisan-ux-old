@@ -1,8 +1,9 @@
 export type SelectFieldOptionKey = string;
 
 export interface SelectFieldOption {
-  label: string;
   key: SelectFieldOptionKey;
+  label: string;
+  subText?: string;
   data?: any;
 }
 

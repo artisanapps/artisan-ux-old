@@ -1,5 +1,7 @@
-import {createTheme, PaletteColorOptions, ThemeProvider } from "@mui/material";
+import {Box, createTheme, PaletteColorOptions, ThemeProvider, Typography} from "@mui/material";
 import React from "react";
+import {SelectFieldOption} from '../Forms/FormFields/selectFields/SelectFields.types';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const ArtisanUXProvider = (props: {
   primaryColor: PaletteColorOptions,
@@ -12,6 +14,35 @@ const ArtisanUXProvider = (props: {
         default: "#F5F5F6"
       },
     },
+    components: {
+      MuiAutocomplete: {
+        defaultProps: {
+          renderOption: (props, option: SelectFieldOption, state, ownerState) => {
+            return (
+              <Box component={"li"} {...props} >
+                <Grid container spacing={0}>
+                  <Grid item xs={12}>
+                    <Typography variant={"body1"}>
+                      { option.label }
+                    </Typography>
+                  </Grid>
+
+                  {
+                    Boolean(option.subText) && (
+                      <Grid item xs={12}>
+                        <Typography variant={"subtitle2"} style={{ color: "#999" }}>
+                          { option.subText }
+                        </Typography>
+                      </Grid>
+                    )
+                  }
+                </Grid>
+              </Box>
+            )
+          }
+        }
+      }
+    }
   })
 
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
