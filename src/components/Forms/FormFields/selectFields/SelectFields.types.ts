@@ -11,6 +11,7 @@ interface SharedProps {
   options: Array<SelectFieldOption>;
   label?: string;
   helpText?: string;
+  required?: boolean;
 }
 
 export interface SingleSelectFieldProps extends SharedProps {
