@@ -12,6 +12,8 @@ interface SharedProps {
   label?: string;
   helpText?: string;
   required?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
 }
 
 export interface SingleSelectFieldProps extends SharedProps {

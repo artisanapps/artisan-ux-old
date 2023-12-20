@@ -99,7 +99,7 @@ const BasicMultiSelectField = () => {
     currentValues: values,
     onChange: setValues,
     label: "Pick some colors...",
-    helpText: "This is the help text for a multi select field"
+    helpText: "This is the help text for a multi select field",
   };
 
   return <MultiSelectField {...fieldProps} />;

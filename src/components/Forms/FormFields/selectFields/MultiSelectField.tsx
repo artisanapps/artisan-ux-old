@@ -10,7 +10,9 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     onChange,
     label,
     helpText,
-    required
+    required,
+    loading,
+    disabled
   } = props;
 
   const onAutocompleteChange = (event: React.SyntheticEvent, values: Array<SelectFieldOptionKey>) => {
@@ -22,10 +24,12 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   return (
     <Autocomplete
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
-      options={options}
+      options={loading ? [] : options}
       value={currentValues}
       onChange={onAutocompleteChange}
       disableClearable={required}
+      loading={loading}
+      disabled={disabled}
     />
   )
 }

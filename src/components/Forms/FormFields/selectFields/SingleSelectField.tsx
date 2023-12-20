@@ -11,7 +11,9 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
     onChange,
     label,
     helpText,
-    required
+    required,
+    loading,
+    disabled
   } = props;
 
   const onAutocompleteChange = (event: React.SyntheticEvent, value: SelectFieldOptionKey) => {
@@ -23,10 +25,12 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
   return (
     <Autocomplete
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
-      options={options}
+      options={loading ? [] : options}
       value={currentValue}
       onChange={onAutocompleteChange}
       disableClearable={required}
+      loading={loading}
+      disabled={disabled}
     />
   )
 }
