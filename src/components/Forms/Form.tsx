@@ -7,9 +7,13 @@ const Form = (props: FormProps) => {
   const { sections } = props;
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={6}>
       {
-        sections.map(section => <FormSection {...section} />)
+        sections.map(section => (
+          <Grid item xs={12}>
+            <FormSection {...section} />
+          </Grid>
+        ))
       }
     </Grid>
   )
@@ -23,7 +27,7 @@ const FormSection = (props: FormSectionProps) => {
   } = props;
 
   return (
-    <>
+    <Grid container spacing={2}>
       {
         Boolean(title) && (
           <Grid item xs={12}>
@@ -47,7 +51,7 @@ const FormSection = (props: FormSectionProps) => {
           </Grid>
         ))
       }
-    </>
+    </Grid>
   )
 }
 

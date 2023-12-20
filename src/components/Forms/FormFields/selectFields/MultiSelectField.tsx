@@ -13,7 +13,8 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     options,
     currentValues,
     onChange,
-    label
+    label,
+    helpText
   } = props;
 
   const onAutocompleteChange = (event: React.SyntheticEvent, values: Array<SelectFieldOptionKey>) => {
@@ -25,7 +26,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   return (
     <Autocomplete
       multiple={true}
-      renderInput={(params) => renderSelectFieldInput(params, { label: label })}
+      renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={options}
       value={currentValues}
       onChange={onAutocompleteChange}

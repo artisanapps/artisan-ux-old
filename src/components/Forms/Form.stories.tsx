@@ -66,7 +66,9 @@ const BasicSingleSelectField = () => {
   const fieldProps: SingleSelectFieldProps = {
     options: options,
     currentValue: value,
-    onChange: setValue
+    onChange: setValue,
+    label: "Pick a color...",
+    helpText: "This is the help text for a single select field"
   };
 
   return <SingleSelectField {...fieldProps} />;
@@ -93,7 +95,9 @@ const BasicMultiSelectField = () => {
   const fieldProps: MultiSelectFieldProps = {
     options: options,
     currentValues: values,
-    onChange: setValues
+    onChange: setValues,
+    label: "Pick some colors...",
+    helpText: "This is the help text for a multi select field"
   };
 
   return <MultiSelectField {...fieldProps} />;
