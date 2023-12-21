@@ -15,6 +15,7 @@ interface SharedProps {
   required?: boolean;
   loading?: boolean;
   disabled?: boolean;
+  pending?: boolean;
 }
 
 export interface SingleSelectFieldProps extends SharedProps {

@@ -1,12 +1,13 @@
 import React from 'react';
 import {SelectFieldOptionKey, SingleSelectFieldProps} from './SelectFields.types';
-import {Autocomplete} from '@mui/material';
+import {Autocomplete, Skeleton} from '@mui/material';
 import {
   getGroupNameFromOption,
   preProcessOptions,
   renderSelectFieldInput,
   sortAndGroupOptions
 } from './SelectFields.helpers';
+import Grid from '@mui/material/Unstable_Grid2';
 
 
 const SingleSelectField = (props: SingleSelectFieldProps) => {
@@ -18,7 +19,8 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
     helpText,
     required,
     loading,
-    disabled
+    disabled,
+    pending
   } = props;
 
   const onAutocompleteChange = (event: React.SyntheticEvent, value: SelectFieldOptionKey) => {
@@ -31,7 +33,13 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
   const processedOptions = loading ? [] : results.options;
   const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
 
-  return (
+  return pending ? (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Skeleton variant={"rectangular"} animation={"wave"} height={"3rem"} />
+      </Grid>
+    </Grid>
+  ) : (
     <Autocomplete
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={processedOptions}

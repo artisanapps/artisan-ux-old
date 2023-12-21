@@ -1,7 +1,8 @@
 import {MultiSelectFieldProps, SelectFieldOption, SelectFieldOptionKey} from './SelectFields.types';
-import {Autocomplete} from '@mui/material';
+import {Autocomplete, Skeleton} from '@mui/material';
 import {getGroupNameFromOption, preProcessOptions, renderSelectFieldInput} from './SelectFields.helpers';
 import React from 'react';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const MultiSelectField = (props: MultiSelectFieldProps) => {
   const {
@@ -12,7 +13,8 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     helpText,
     required,
     loading,
-    disabled
+    disabled,
+    pending
   } = props;
 
   const onAutocompleteChange = (event: React.SyntheticEvent, values: Array<SelectFieldOptionKey>) => {
@@ -25,7 +27,13 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   const processedOptions = loading ? [] : results.options;
   const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
 
-  return (
+  return pending ? (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Skeleton variant={"rectangular"} animation={"wave"} height={"3rem"} />
+      </Grid>
+    </Grid>
+  ) : (
     <Autocomplete
       multiple={true}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
