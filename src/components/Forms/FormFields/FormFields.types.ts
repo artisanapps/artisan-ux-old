@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
 type TextFieldChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
-export {
-  TextFieldChangeEvent
-};
+export { TextFieldChangeEvent };

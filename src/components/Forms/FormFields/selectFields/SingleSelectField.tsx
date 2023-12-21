@@ -1,14 +1,15 @@
-import React from 'react';
-import {SelectFieldOptionKey, SingleSelectFieldProps} from './SelectFields.types';
-import {Autocomplete, Skeleton} from '@mui/material';
+import React from "react";
+import {
+  SelectFieldOptionKey,
+  SingleSelectFieldProps,
+} from "./SelectFields.types";
+import { Autocomplete, Skeleton } from "@mui/material";
 import {
   getGroupNameFromOption,
   preProcessOptions,
-  renderSelectFieldInput,
-  sortAndGroupOptions
-} from './SelectFields.helpers';
-import Grid from '@mui/material/Unstable_Grid2';
-
+  renderSelectFieldInput
+} from "./SelectFields.helpers";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const SingleSelectField = (props: SingleSelectFieldProps) => {
   const {
@@ -20,18 +21,23 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
     required,
     loading,
     disabled,
-    pending
+    pending,
   } = props;
 
-  const onAutocompleteChange = (event: React.SyntheticEvent, value: SelectFieldOptionKey) => {
-    const matchingOptions = options.filter(option => option.key === value);
-    const selectedOption = matchingOptions.length > 0 ? matchingOptions[0] : null;
+  const onAutocompleteChange = (
+    event: React.SyntheticEvent,
+    value: SelectFieldOptionKey
+  ) => {
+    const matchingOptions = options.filter((option) => option.key === value);
+    const selectedOption =
+      matchingOptions.length > 0 ? matchingOptions[0] : null;
     onChange(value, selectedOption?.data);
-  }
+  };
 
-  const results = preProcessOptions(options)
+  const results = preProcessOptions(options);
   const processedOptions = loading ? [] : results.options;
-  const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
+  const groupBy =
+    results.groups.length > 1 ? getGroupNameFromOption : undefined;
 
   return pending ? (
     <Grid container spacing={2}>
@@ -41,7 +47,9 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
     </Grid>
   ) : (
     <Autocomplete
-      renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
+      renderInput={(params) =>
+        renderSelectFieldInput(params, { label: label, helperText: helpText })
+      }
       options={processedOptions}
       value={currentValue}
       onChange={onAutocompleteChange}
@@ -50,7 +58,7 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
       disabled={disabled}
       groupBy={groupBy}
     />
-  )
-}
+  );
+};
 
 export default SingleSelectField;

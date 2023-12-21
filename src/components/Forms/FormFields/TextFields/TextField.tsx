@@ -1,19 +1,13 @@
-import {TextFieldProps} from './TextField.types';
-import {TextFieldChangeEvent} from '../FormFields.types';
-import {default as MUITextField} from '@mui/material/TextField/TextField';
+import { TextFieldProps } from "./TextField.types";
+import { TextFieldChangeEvent } from "../FormFields.types";
+import { default as MUITextField } from "@mui/material/TextField/TextField";
 
 const TextField = (props: TextFieldProps) => {
-  const {
-    id,
-    value,
-    onChange,
-    label,
-    multiline
-  } = props;
+  const { id, value, onChange, label, multiline } = props;
 
   const onValueChange = (event: TextFieldChangeEvent) => {
     onChange(event.target.value);
-  }
+  };
 
   return (
     <MUITextField
@@ -27,7 +21,7 @@ const TextField = (props: TextFieldProps) => {
       multiline={multiline}
       rows={2}
     />
-  )
-}
+  );
+};
 
 export default TextField;

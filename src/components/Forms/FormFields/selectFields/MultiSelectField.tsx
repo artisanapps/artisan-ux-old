@@ -1,8 +1,15 @@
-import {MultiSelectFieldProps, SelectFieldOption, SelectFieldOptionKey} from './SelectFields.types';
-import {Autocomplete, Skeleton} from '@mui/material';
-import {getGroupNameFromOption, preProcessOptions, renderSelectFieldInput} from './SelectFields.helpers';
-import React from 'react';
-import Grid from '@mui/material/Unstable_Grid2';
+import {
+  MultiSelectFieldProps,
+  SelectFieldOptionKey,
+} from "./SelectFields.types";
+import { Autocomplete, Skeleton } from "@mui/material";
+import {
+  getGroupNameFromOption,
+  preProcessOptions,
+  renderSelectFieldInput,
+} from "./SelectFields.helpers";
+import React from "react";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const MultiSelectField = (props: MultiSelectFieldProps) => {
   const {
@@ -14,18 +21,28 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     required,
     loading,
     disabled,
-    pending
+    pending,
   } = props;
 
-  const onAutocompleteChange = (event: React.SyntheticEvent, values: Array<SelectFieldOptionKey>) => {
-    const matchingOptions = options.filter(option => values.includes(option.key));
-    const selectedData = matchingOptions.filter(option => Boolean(option.data)).map(option => option.data);
-    onChange(values, selectedData);
-  }
+  const onAutocompleteChange = (
+    event: React.SyntheticEvent,
+    values: Array<SelectFieldOptionKey>
+  ) => {
+    const matchingOptions = options.filter((option) =>
+      values.includes(option.key)
+    );
 
-  const results = preProcessOptions(options)
+    const selectedData = matchingOptions
+      .filter((option) => Boolean(option.data))
+      .map((option) => option.data);
+
+    onChange(values, selectedData);
+  };
+
+  const results = preProcessOptions(options);
   const processedOptions = loading ? [] : results.options;
-  const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
+  const groupBy =
+    results.groups.length > 1 ? getGroupNameFromOption : undefined;
 
   return pending ? (
     <Grid container spacing={2}>
@@ -36,7 +53,9 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
   ) : (
     <Autocomplete
       multiple={true}
-      renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
+      renderInput={(params) =>
+        renderSelectFieldInput(params, { label: label, helperText: helpText })
+      }
       options={processedOptions}
       value={currentValues}
       onChange={onAutocompleteChange}
@@ -45,7 +64,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
       disabled={disabled}
       groupBy={groupBy}
     />
-  )
-}
+  );
+};
 
 export default MultiSelectField;
