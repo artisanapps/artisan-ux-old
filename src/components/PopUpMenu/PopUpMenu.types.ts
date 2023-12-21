@@ -1,4 +1,4 @@
-import {ButtonClickEvent} from "../../core/Events.types";
+import { ButtonClickEvent } from "../../core/Events.types";
 
 export interface PopUpMenuItemProps {
   label: string;

@@ -1,19 +1,19 @@
 export interface TreeProps {
   treeID: string;
-  items: Array<TreeItemProps>,
+  items: Array<TreeItemProps>;
   pending?: boolean;
 }
 
 export interface TreeItemAdapter {
-  id: string,
-  primaryText: string,
-  secondaryText: string,
+  id: string;
+  primaryText: string;
+  secondaryText: string;
   primaryAction?: {
     clickAction?: () => void;
     navigateToURL?: string;
-  },
-  childItems?: Array<TreeItemProps>,
-  actions?: Array<TreeItemActionProps>,
+  };
+  childItems?: Array<TreeItemProps>;
+  actions?: Array<TreeItemActionProps>;
 }
 
 export interface TreeDragDropAdapter {

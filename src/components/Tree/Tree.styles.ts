@@ -1,11 +1,11 @@
-import {createStyles, makeStyles, Theme} from '@mui/material';
+import { createStyles, makeStyles, Theme } from "@mui/material";
 
 const useTreeStyles = makeStyles((theme: Theme) =>
   createStyles({
     treeItem: {
       padding: theme.spacing(1),
       display: "flex",
-      alignItems: "center"
+      alignItems: "center",
     },
     itemGroup: {
       marginLeft: 7,
@@ -15,13 +15,13 @@ const useTreeStyles = makeStyles((theme: Theme) =>
     clickable: {
       color: theme.palette.primary.main,
       "&:hover": {
-        textDecoration: "underline"
-      }
+        textDecoration: "underline",
+      },
     },
     secondaryText: {
-      color: "rgba(0, 0, 0, 0.54)"
-    }
+      color: "rgba(0, 0, 0, 0.54)",
+    },
   })
-)
+);
 
 export { useTreeStyles };

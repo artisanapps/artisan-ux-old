@@ -1,18 +1,24 @@
-import {Link, Skeleton, Typography, TypographyProps, useTheme} from "@mui/material";
-import {useTreeStyles} from "./Tree.styles";
-import {useDrag, useDrop} from "react-dnd";
+import {
+  Link,
+  Skeleton,
+  Typography,
+  TypographyProps,
+  useTheme,
+} from "@mui/material";
+import { useTreeStyles } from "./Tree.styles";
+import { useDrag, useDrop } from "react-dnd";
 import React from "react";
-import {DragIndicator} from "@mui/icons-material";
-import {TreeDragDropAdapter, TreeItemProps} from "./Tree.types";
+import { DragIndicator } from "@mui/icons-material";
+import { TreeDragDropAdapter, TreeItemProps } from "./Tree.types";
 import TreeItemActionMenu from "./TreeItemActionMenu";
-import {useTreeContext} from "./TreeContext";
+import { useTreeContext } from "./TreeContext";
 
 const PrimaryText = (props: {
-  primaryText: string,
+  primaryText: string;
   primaryAction?: {
     clickAction?: () => void;
     navigateToURL?: string;
-  }
+  };
 }) => {
   const classes = useTreeStyles();
 
@@ -24,54 +30,46 @@ const PrimaryText = (props: {
     variant: "body1",
     children: Boolean(navigateToURL) ? (
       <Link href={navigateToURL}>
-        <span className={classes.clickable}>
-          { primaryText }
-        </span>
+        <span className={classes.clickable}>{primaryText}</span>
       </Link>
     ) : (
       <span
         onClick={primaryClickAction}
         className={Boolean(primaryClickAction) ? classes.clickable : undefined}
       >
-        { primaryText }
+        {primaryText}
       </span>
-    )
-  }
+    ),
+  };
 
   return <Typography {...typographyProps} />;
-}
+};
 
 const DraggableLabel = (props: {
-  adapter: TreeDragDropAdapter,
-  children?: any,
+  adapter: TreeDragDropAdapter;
+  children?: any;
 }) => {
   const theme = useTheme();
   const styles = useTreeStyles();
 
-  const {
-    itemID,
-    itemType,
-    dragData,
-    canDrop,
-    onDrop,
-    disableDrag
-  } = props.adapter;
+  const { itemID, itemType, dragData, canDrop, onDrop, disableDrag } =
+    props.adapter;
 
   const [dragProps, drag, dragPreview] = useDrag(() => ({
     type: itemType,
     item: dragData,
     collect: (monitor) => ({ isDragging: monitor.isDragging() }),
-    canDrag: !disableDrag
+    canDrag: !disableDrag,
   }));
 
   const [dropProps, drop] = useDrop(() => ({
     accept: itemType === "group" ? ["group", "item"] : ["item"],
-    collect: monitor => ({
+    collect: (monitor) => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
+      canDrop: monitor.canDrop(),
     }),
     canDrop: (droppedItemData: any) => {
-      if(droppedItemData.itemID === dragData.itemID) {
+      if (droppedItemData.itemID === dragData.itemID) {
         return false;
       }
 
@@ -80,7 +78,7 @@ const DraggableLabel = (props: {
     drop: (droppedItem: any) => {
       onDrop(droppedItem);
       return droppedItem;
-    }
+    },
   }));
 
   const isDragging = dragProps.isDragging;
@@ -90,9 +88,7 @@ const DraggableLabel = (props: {
 
   const dropStyle: React.CSSProperties = {
     borderBottom:
-      isOver && dropAllowed
-        ? `2rem solid ${theme.palette.primary.light}`
-        : ''
+      isOver && dropAllowed ? `2rem solid ${theme.palette.primary.light}` : "",
   };
 
   return (
@@ -107,20 +103,14 @@ const DraggableLabel = (props: {
         )}
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 const TreeItemLabel = (props: TreeItemProps) => {
   const styles = useTreeStyles();
   const pending = useTreeContext().pending;
 
-  const {
-    primaryText,
-    secondaryText,
-    actions,
-    primaryAction
-  } = props.adapter;
+  const { primaryText, secondaryText, actions, primaryAction } = props.adapter;
 
   const isDraggable = Boolean(props.dragDropAdapter);
   const hasActions = actions && actions.length > 0;
@@ -146,19 +136,23 @@ const TreeItemLabel = (props: TreeItemProps) => {
 
   return isDraggable ? (
     <DraggableLabel adapter={props.dragDropAdapter}>
-      { labelBody }
+      {labelBody}
 
-      {hasActions && actions !== undefined && <TreeItemActionMenu actions={actions} />}
+      {hasActions && actions !== undefined && (
+        <TreeItemActionMenu actions={actions} />
+      )}
     </DraggableLabel>
   ) : (
     <div>
       <div className={styles.treeItem}>
         {labelBody}
 
-        {hasActions && actions !== undefined && <TreeItemActionMenu actions={actions} />}
+        {hasActions && actions !== undefined && (
+          <TreeItemActionMenu actions={actions} />
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default TreeItemLabel;
