@@ -23,6 +23,7 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
 
   return (
     <Autocomplete
+      multiple={true}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
       options={loading ? [] : options}
       value={currentValues}

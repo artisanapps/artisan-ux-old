@@ -1,4 +1,4 @@
-import {Box, createTheme, PaletteColorOptions, ThemeProvider, Typography} from "@mui/material";
+import {Box, createFilterOptions, createTheme, PaletteColorOptions, ThemeProvider, Typography} from "@mui/material";
 import React from "react";
 import {SelectFieldOption} from '../Forms/FormFields/selectFields/SelectFields.types';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -43,7 +43,8 @@ const ArtisanUXProvider = (props: {
           getOptionKey: (option: SelectFieldOption) => option.key,
           isOptionEqualToValue: (option: SelectFieldOption, value: SelectFieldOption) => option.key === value.key,
           size: "small",
-          filterSelectedOptions: true
+          filterSelectedOptions: true,
+          filterOptions: createFilterOptions({ stringify: (value: SelectFieldOption) => `${value.label} ${value.subText}`})
         }
       }
     }
