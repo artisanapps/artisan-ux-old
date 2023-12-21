@@ -5,6 +5,7 @@ export interface SelectFieldOption {
   label: string;
   subText?: string;
   data?: any;
+  groupName?: string;
 }
 
 interface SharedProps {

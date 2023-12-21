@@ -23,7 +23,7 @@ const ArtisanUXProvider = (props: {
           isOptionEqualToValue: (option: SelectFieldOption, value: SelectFieldOption) => option.key === value.key,
           size: "small",
           filterSelectedOptions: true,
-          filterOptions: createFilterOptions({ stringify: (value: SelectFieldOption) => `${value.label} ${value.subText}`})
+          filterOptions: createFilterOptions({ stringify: (value: SelectFieldOption) => `${value.label} ${value.subText}`}),
         }
       }
     }

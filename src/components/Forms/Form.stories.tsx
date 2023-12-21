@@ -51,17 +51,20 @@ const BasicSingleSelectField = () => {
 
   const options: Array<SelectFieldOption> = [
     {
-      label: "Red",
-      subText: "Hex: #FF0000",
-      key: "red"
+      label: "Blue",
+      key: "blue",
+      groupName: "Blues",
     },
     {
-      label: "Blue",
-      key: "blue"
+      label: "Red",
+      subText: "Hex: #FF0000",
+      key: "red",
+      groupName: "Reds",
     },
     {
       label: "Sky Blue",
-      key: "sky_blue"
+      key: "sky_blue",
+      groupName: "Blues",
     }
   ];
 
@@ -81,16 +84,18 @@ const BasicMultiSelectField = () => {
 
   const options: Array<SelectFieldOption> = [
     {
-      label: "Red",
-      key: "red"
+      label: "Blue",
+      key: "blue",
+      groupName: "Blues",
     },
     {
-      label: "Blue",
-      key: "blue"
+      label: "Red",
+      key: "red",
+      groupName: "Reds"
     },
     {
       label: "Sky Blue",
-      key: "sky_blue"
+      key: "sky_blue",
     }
   ];
 

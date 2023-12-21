@@ -1,6 +1,6 @@
-import {MultiSelectFieldProps, SelectFieldOptionKey} from './SelectFields.types';
+import {MultiSelectFieldProps, SelectFieldOption, SelectFieldOptionKey} from './SelectFields.types';
 import {Autocomplete} from '@mui/material';
-import { renderSelectFieldInput } from './SelectFields.helpers';
+import {getGroupNameFromOption, preProcessOptions, renderSelectFieldInput} from './SelectFields.helpers';
 import React from 'react';
 
 const MultiSelectField = (props: MultiSelectFieldProps) => {
@@ -21,16 +21,21 @@ const MultiSelectField = (props: MultiSelectFieldProps) => {
     onChange(values, selectedData);
   }
 
+  const results = preProcessOptions(options)
+  const processedOptions = loading ? [] : results.options;
+  const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
+
   return (
     <Autocomplete
       multiple={true}
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
-      options={loading ? [] : options}
+      options={processedOptions}
       value={currentValues}
       onChange={onAutocompleteChange}
       disableClearable={required}
       loading={loading}
       disabled={disabled}
+      groupBy={groupBy}
     />
   )
 }

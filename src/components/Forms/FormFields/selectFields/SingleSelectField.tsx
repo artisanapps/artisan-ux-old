@@ -1,7 +1,12 @@
 import React from 'react';
 import {SelectFieldOptionKey, SingleSelectFieldProps} from './SelectFields.types';
 import {Autocomplete} from '@mui/material';
-import { renderSelectFieldInput } from './SelectFields.helpers';
+import {
+  getGroupNameFromOption,
+  preProcessOptions,
+  renderSelectFieldInput,
+  sortAndGroupOptions
+} from './SelectFields.helpers';
 
 
 const SingleSelectField = (props: SingleSelectFieldProps) => {
@@ -22,15 +27,20 @@ const SingleSelectField = (props: SingleSelectFieldProps) => {
     onChange(value, selectedOption?.data);
   }
 
+  const results = preProcessOptions(options)
+  const processedOptions = loading ? [] : results.options;
+  const groupBy = results.groups.length > 1 ? getGroupNameFromOption : undefined;
+
   return (
     <Autocomplete
       renderInput={(params) => renderSelectFieldInput(params, { label: label, helperText: helpText })}
-      options={loading ? [] : options}
+      options={processedOptions}
       value={currentValue}
       onChange={onAutocompleteChange}
       disableClearable={required}
       loading={loading}
       disabled={disabled}
+      groupBy={groupBy}
     />
   )
 }
