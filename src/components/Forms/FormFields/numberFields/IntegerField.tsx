@@ -1,6 +1,6 @@
-import {IntegerFieldProps} from './NumberField.types';
-import {TextFieldChangeEvent} from '../FormFields.types';
-import React from 'react';
+import { IntegerFieldProps } from "./NumberField.types";
+import { TextFieldChangeEvent } from "../FormFields.types";
+import React from "react";
 import { default as MUITextField } from "@mui/material/TextField/TextField";
 
 const IntegerField = (props: IntegerFieldProps) => {
@@ -23,7 +23,7 @@ const IntegerField = (props: IntegerFieldProps) => {
       fullWidth={true}
       helperText={helpText}
     />
-  )
-}
+  );
+};
 
 export default IntegerField;

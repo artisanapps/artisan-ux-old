@@ -11,9 +11,9 @@ import {
 import SingleSelectField from "./FormFields/selectFields/SingleSelectField";
 import MultiSelectField from "./FormFields/selectFields/MultiSelectField";
 import { ArtisanUXProvider } from "../Provider";
-import {IntegerFieldProps} from './FormFields/numberFields/NumberField.types';
-import IntegerField from './FormFields/numberFields/IntegerField';
-import FloatField from './FormFields/numberFields/FloatField';
+import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
+import IntegerField from "./FormFields/numberFields/IntegerField";
+import FloatField from "./FormFields/numberFields/FloatField";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -121,10 +121,10 @@ const BasicIntegerField = () => {
     label: "Enter integer...",
     value: value,
     onChange: setValue,
-  }
+  };
 
   return <IntegerField {...props} />;
-}
+};
 
 const BasicFloatField = () => {
   const [value, setValue] = useState<number>(null);
@@ -134,10 +134,10 @@ const BasicFloatField = () => {
     label: "Enter float...",
     value: value,
     onChange: setValue,
-  }
+  };
 
   return <FloatField {...props} />;
-}
+};
 
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
@@ -155,7 +155,7 @@ export const ComprehensiveForm = () => {
       {
         title: "Number Fields",
         fields: [<BasicIntegerField />, <BasicFloatField />],
-      }
+      },
     ],
   };
 

@@ -6,4 +6,4 @@ export interface IntegerFieldProps {
   helpText?: string;
 }
 
-export interface FloatFieldProps extends IntegerFieldProps { }
+export interface FloatFieldProps extends IntegerFieldProps {}

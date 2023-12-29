@@ -1,7 +1,7 @@
-import React from 'react';
-import {FloatFieldProps} from './NumberField.types';
-import {TextFieldChangeEvent} from '../FormFields.types';
-import {default as MUITextField} from '@mui/material/TextField/TextField';
+import React from "react";
+import { FloatFieldProps } from "./NumberField.types";
+import { TextFieldChangeEvent } from "../FormFields.types";
+import { default as MUITextField } from "@mui/material/TextField/TextField";
 
 const FloatField = (props: FloatFieldProps) => {
   const { id, value, onChange, label, helpText } = props;
@@ -23,7 +23,7 @@ const FloatField = (props: FloatFieldProps) => {
       fullWidth={true}
       helperText={helpText}
     />
-  )
-}
+  );
+};
 
 export default FloatField;
