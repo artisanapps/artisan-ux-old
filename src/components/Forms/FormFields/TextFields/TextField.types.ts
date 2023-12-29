@@ -1,5 +1,3 @@
-import { TextFieldProps as MUITextFieldProps } from "@mui/material";
-
 export interface TextFieldProps {
   id: string;
   value: string;

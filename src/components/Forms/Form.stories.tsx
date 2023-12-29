@@ -11,6 +11,8 @@ import {
 import SingleSelectField from "./FormFields/selectFields/SingleSelectField";
 import MultiSelectField from "./FormFields/selectFields/MultiSelectField";
 import { ArtisanUXProvider } from "../Provider";
+import {IntegerFieldProps} from './FormFields/numberFields/NumberField.types';
+import IntegerField from './FormFields/numberFields/IntegerField';
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -110,19 +112,36 @@ const BasicMultiSelectField = () => {
   return <MultiSelectField {...fieldProps} />;
 };
 
+const BasicIntegerField = () => {
+  const [value, setValue] = useState<number>(null);
+
+  const props: IntegerFieldProps = {
+    id: "basic_integer_field",
+    label: "Enter integer...",
+    value: value,
+    onChange: setValue,
+  }
+
+  return <IntegerField {...props} />;
+}
+
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
     sections: [
       {
-        title: "Section 1",
+        title: "Text Fields",
         subtitle: "Additional information about this section",
         fields: [<BasicTextField />, <BasicMultiLineField />],
       },
       {
-        title: "Section 2",
+        title: "Select Fields",
         subtitle: "This field contains our select fields",
         fields: [<BasicSingleSelectField />, <BasicMultiSelectField />],
       },
+      {
+        title: "Number Fields",
+        fields: [<BasicIntegerField />],
+      }
     ],
   };
 
