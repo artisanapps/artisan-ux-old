@@ -7,7 +7,7 @@ import { Autocomplete, Skeleton } from "@mui/material";
 import {
   getGroupNameFromOption,
   preProcessOptions,
-  renderSelectFieldInput
+  renderSelectFieldInput,
 } from "./SelectFields.helpers";
 import Grid from "@mui/material/Unstable_Grid2";
 
