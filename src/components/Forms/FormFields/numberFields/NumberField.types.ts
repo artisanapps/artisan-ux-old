@@ -5,3 +5,5 @@ export interface IntegerFieldProps {
   label?: string;
   helpText?: string;
 }
+
+export interface FloatFieldProps extends IntegerFieldProps { }
