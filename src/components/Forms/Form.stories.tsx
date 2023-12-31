@@ -14,6 +14,9 @@ import { ArtisanUXProvider } from "../Provider";
 import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
 import IntegerField from "./FormFields/numberFields/IntegerField";
 import FloatField from "./FormFields/numberFields/FloatField";
+import {Dayjs} from 'dayjs';
+import {DateFieldProps} from './FormFields/dateFields/DateField.types';
+import DateField from './FormFields/dateFields/DateField';
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -139,6 +142,19 @@ const BasicFloatField = () => {
   return <FloatField {...props} />;
 };
 
+const BasicDateField = () => {
+  const [value, setValue] = useState<string>(null);
+
+  const props: DateFieldProps = {
+    id: "basic_date_field",
+    label: "Enter a date...",
+    value: value,
+    onChange: setValue,
+  };
+
+  return <DateField {...props} />;
+};
+
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
     sections: [
@@ -155,6 +171,10 @@ export const ComprehensiveForm = () => {
       {
         title: "Number Fields",
         fields: [<BasicIntegerField />, <BasicFloatField />],
+      },
+      {
+        title: "Date Fields",
+        fields: [<BasicDateField />]
       },
     ],
   };

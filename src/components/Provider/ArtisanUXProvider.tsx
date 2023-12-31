@@ -10,6 +10,8 @@ import React from "react";
 import { SelectFieldOption } from "../Forms/FormFields/selectFields/SelectFields.types";
 import Grid from "@mui/material/Unstable_Grid2";
 import renderSelectFieldOption from "../Forms/FormFields/selectFields/SelectFieldOption";
+import {LocalizationProvider} from '@mui/x-date-pickers';
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 
 const ArtisanUXProvider = (props: {
   primaryColor: PaletteColorOptions;
@@ -42,7 +44,13 @@ const ArtisanUXProvider = (props: {
     },
   });
 
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {props.children}
+      </LocalizationProvider>
+    </ThemeProvider>
+  )
 };
 
 export default ArtisanUXProvider;

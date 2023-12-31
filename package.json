@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/workofartisan/artisan-ux#readme",
   "bundledDependencies": [
+    "dayjs",
     "react-dnd",
     "react-dnd-html5-backend",
     "@emotion/react",
@@ -35,6 +36,7 @@
     "@types/react"
   ],
   "dependencies": {
+    "dayjs": "^1.11.10",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "@emotion/react": "^11.11.1",
