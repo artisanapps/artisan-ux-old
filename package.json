@@ -30,7 +30,6 @@
     "@mui/icons-material",
     "@mui/material",
     "@mui/x-tree-view",
-    "@mui/x-date-pickers",
     "react",
     "react-dom",
     "@types/react"
