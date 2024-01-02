@@ -14,7 +14,6 @@ import { ArtisanUXProvider } from "../Provider";
 import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
 import IntegerField from "./FormFields/numberFields/IntegerField";
 import FloatField from "./FormFields/numberFields/FloatField";
-import {Dayjs} from 'dayjs';
 import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/dateFields/DateField.types';
 import DateField from './FormFields/dateFields/DateField';
 import DateRangeField from "./FormFields/dateFields/DateRangeField";
