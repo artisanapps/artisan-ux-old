@@ -15,8 +15,10 @@ import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
 import IntegerField from "./FormFields/numberFields/IntegerField";
 import FloatField from "./FormFields/numberFields/FloatField";
 import {Dayjs} from 'dayjs';
-import {DateFieldProps} from './FormFields/dateFields/DateField.types';
+import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/dateFields/DateField.types';
 import DateField from './FormFields/dateFields/DateField';
+import DateRangeField from "./FormFields/dateFields/DateRangeField";
+import * as moment from "moment";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -150,10 +152,31 @@ const BasicDateField = () => {
     label: "Enter a date...",
     value: value,
     onChange: setValue,
+    helpText: Boolean(value) && moment(value).format('MMM D YYYY')
   };
 
   return <DateField {...props} />;
 };
+
+const BasicDateRangeField = () => {
+  const [value, setValue] = useState<DateRangeValue>({ startDate: null, endDate: null });
+
+  const props: DateRangeFieldProps = {
+    id: "basic_date_field",
+    value: value,
+    onChange: setValue,
+    labels: {
+      startDateLabel: "Starting on...",
+      endDateLabel: "Ending on..."
+    },
+    helpTexts: {
+      startDateHelpText: value.startDate && moment(value.startDate).format('MMM D YYYY'),
+      endDateHelpText: value.endDate && moment(value.endDate).format('MMM D YYYY')
+    }
+  };
+
+  return <DateRangeField {...props} />;
+}
 
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
@@ -174,7 +197,7 @@ export const ComprehensiveForm = () => {
       },
       {
         title: "Date Fields",
-        fields: [<BasicDateField />]
+        fields: [<BasicDateField />, <BasicDateRangeField />]
       },
     ],
   };

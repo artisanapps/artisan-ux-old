@@ -8,7 +8,8 @@ const DateField = (props: DateFieldProps) => {
     id,
     value,
     onChange,
-    label
+    label,
+      helpText
   } = props;
 
   const onInput = (event: TextFieldChangeEvent) => {
@@ -26,6 +27,7 @@ const DateField = (props: DateFieldProps) => {
       color={"primary"}
       fullWidth={true}
       InputLabelProps={{ shrink: true }}
+      helperText={helpText}
     />
   )
 };
