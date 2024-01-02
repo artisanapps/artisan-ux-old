@@ -14,6 +14,10 @@ import { ArtisanUXProvider } from "../Provider";
 import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
 import IntegerField from "./FormFields/numberFields/IntegerField";
 import FloatField from "./FormFields/numberFields/FloatField";
+import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/dateFields/DateField.types';
+import DateField from './FormFields/dateFields/DateField';
+import DateRangeField from "./FormFields/dateFields/DateRangeField";
+import * as moment from "moment";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -139,6 +143,41 @@ const BasicFloatField = () => {
   return <FloatField {...props} />;
 };
 
+const BasicDateField = () => {
+  const [value, setValue] = useState<string>(null);
+
+  const props: DateFieldProps = {
+    id: "basic_date_field",
+    label: "Enter a date...",
+    value: value,
+    onChange: setValue,
+    helpText: Boolean(value) && moment(value).format('MMM D YYYY')
+  };
+
+  return <DateField {...props} />;
+};
+
+const BasicDateRangeField = () => {
+  const [value, setValue] = useState<DateRangeValue>({ startDate: null, endDate: null });
+
+  const props: DateRangeFieldProps = {
+    id: "basic_date_field",
+    value: value,
+    onChange: setValue,
+    autoAdjustInvalidDates: true,
+    labels: {
+      startDateLabel: "Starting on...",
+      endDateLabel: "Ending on..."
+    },
+    helpTexts: {
+      startDateHelpText: value.startDate && moment(value.startDate).format('MMM D YYYY'),
+      endDateHelpText: value.endDate && moment(value.endDate).format('MMM D YYYY')
+    }
+  };
+
+  return <DateRangeField {...props} />;
+}
+
 export const ComprehensiveForm = () => {
   const formProps: FormProps = {
     sections: [
@@ -155,6 +194,10 @@ export const ComprehensiveForm = () => {
       {
         title: "Number Fields",
         fields: [<BasicIntegerField />, <BasicFloatField />],
+      },
+      {
+        title: "Date Fields",
+        fields: [<BasicDateField />, <BasicDateRangeField />]
       },
     ],
   };

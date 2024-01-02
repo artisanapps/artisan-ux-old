@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/workofartisan/artisan-ux#readme",
   "bundledDependencies": [
+    "moment",
     "react-dnd",
     "react-dnd-html5-backend",
     "@emotion/react",
@@ -34,6 +35,7 @@
     "@types/react"
   ],
   "dependencies": {
+    "moment": "^2.30.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "@emotion/react": "^11.11.1",
