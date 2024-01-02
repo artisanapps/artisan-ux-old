@@ -165,6 +165,7 @@ const BasicDateRangeField = () => {
     id: "basic_date_field",
     value: value,
     onChange: setValue,
+    autoAdjustInvalidDates: true,
     labels: {
       startDateLabel: "Starting on...",
       endDateLabel: "Ending on..."

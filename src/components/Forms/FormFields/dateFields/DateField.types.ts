@@ -15,6 +15,7 @@ export interface DateRangeFieldProps {
   id: string;
   value: DateRangeValue,
   onChange: (newDateRange: DateRangeValue) => void;
+  autoAdjustInvalidDates?: boolean;
   labels?: { startDateLabel: string, endDateLabel: string },
   helpTexts?: { startDateHelpText: string, endDateHelpText: string }
 }
