@@ -226,8 +226,8 @@ const BasicMultiSelectBoxField = () => {
       { label: "Gold", key: "gold" },
       { label: "White", key: "white" }
     ],
-    label: "Pick some colors...",
-    helpText: "Select as many colors as you want",
+    label: "Multiple selection field",
+    helpText: "Square checkboxes will indicate multiple options can be selected. Pick as many colors as you want...",
     values: value,
     onChange: setValue
   }

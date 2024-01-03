@@ -1,7 +1,7 @@
 import React from "react";
 import {MultiSelectBoxFieldProps} from "./SelectBoxFields.types";
 import Grid from "@mui/material/Unstable_Grid2";
-import {Checkbox, CheckboxProps, FormControlLabel} from "@mui/material";
+import {Checkbox, CheckboxProps, DialogContentText, FormControlLabel, Typography} from "@mui/material";
 
 const MultiSelectBoxField = (props: MultiSelectBoxFieldProps) => {
   const {
@@ -27,15 +27,30 @@ const MultiSelectBoxField = (props: MultiSelectBoxFieldProps) => {
 
   return (
     <Grid container spacing={1}>
+      {label && (
+        <Grid item xs={12}>
+          <Typography variant={"body1"}>
+            { label }
+          </Typography>
+
+          {helpText && (
+            <DialogContentText>
+              { helpText }
+            </DialogContentText>
+          )}
+        </Grid>
+      )}
+
       {
         options.map(option => {
           const checkboxProps: CheckboxProps = {
             checked: values.includes(option.key),
-            onClick: () => onClick(option.key)
+            onClick: () => onClick(option.key),
+            size: "small"
           }
 
           return (
-            <Grid item xs={3}>
+            <Grid item xs={3} id={`${id}_${option.key}`}>
               <FormControlLabel
                 control={<Checkbox {...checkboxProps} />}
                 label={option.label}
