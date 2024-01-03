@@ -18,6 +18,8 @@ import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/
 import DateField from './FormFields/dateFields/DateField';
 import DateRangeField from "./FormFields/dateFields/DateRangeField";
 import * as moment from "moment";
+import {MultiSelectBoxFieldProps} from "./FormFields/selectBoxFields/SelectBoxFields.types";
+import MultiSelectBoxField from "./FormFields/selectBoxFields/MultiSelectBoxField";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -206,5 +208,46 @@ export const ComprehensiveForm = () => {
     <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
       <Form {...formProps} />
     </ArtisanUXProvider>
+  );
+};
+
+const BasicMultiSelectBoxField = () => {
+  const [value, setValue] = useState<Array<string>>([]);
+
+  const props: MultiSelectBoxFieldProps = {
+    id: "multi_select_box_field",
+    options: [
+      { label: "Red", key: "red" },
+      { label: "Blue", key: "blue" },
+      { label: "Grey", key: "grey" },
+      { label: "Yellow", key: "yellow" },
+      { label: "Green", key: "green" },
+      { label: "Purple", key: "purple" },
+      { label: "Gold", key: "gold" },
+      { label: "White", key: "white" }
+    ],
+    label: "Pick some colors...",
+    helpText: "Select as many colors as you want",
+    values: value,
+    onChange: setValue
+  }
+
+  return <MultiSelectBoxField {...props} />;
+}
+
+export const SelectBoxFields = () => {
+  const formProps: FormProps = {
+    sections: [
+      {
+        title: "Select Box Fields",
+        fields: [<BasicMultiSelectBoxField />],
+      }
+    ],
+  };
+
+  return (
+      <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+        <Form {...formProps} />
+      </ArtisanUXProvider>
   );
 };
