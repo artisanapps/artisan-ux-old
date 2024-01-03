@@ -18,8 +18,9 @@ import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/
 import DateField from './FormFields/dateFields/DateField';
 import DateRangeField from "./FormFields/dateFields/DateRangeField";
 import * as moment from "moment";
-import {MultiSelectBoxFieldProps} from "./FormFields/selectBoxFields/SelectBoxFields.types";
+import {MultiSelectBoxFieldProps, SingleSelectBoxFieldProps} from "./FormFields/selectBoxFields/SelectBoxFields.types";
 import MultiSelectBoxField from "./FormFields/selectBoxFields/MultiSelectBoxField";
+import SingleSelectBoxField from "./FormFields/selectBoxFields/SingleSelectBoxField";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -235,12 +236,36 @@ const BasicMultiSelectBoxField = () => {
   return <MultiSelectBoxField {...props} />;
 }
 
+const BasicSingleSelectBoxField = () => {
+  const [value, setValue] = useState<string>(null);
+
+  const props: SingleSelectBoxFieldProps = {
+    id: "single_select_box_field",
+    options: [
+      { label: "Red", key: "red" },
+      { label: "Blue", key: "blue" },
+      { label: "Grey", key: "grey" },
+      { label: "Yellow", key: "yellow" },
+      { label: "Green", key: "green" },
+      { label: "Purple", key: "purple" },
+      { label: "Gold", key: "gold" },
+      { label: "White", key: "white" }
+    ],
+    label: "Single selection field",
+    helpText: "Round checkboxes will indicate only one option can be selected. Pick a color...",
+    value: value,
+    onChange: setValue
+  }
+
+  return <SingleSelectBoxField {...props} />;
+}
+
 export const SelectBoxFields = () => {
   const formProps: FormProps = {
     sections: [
       {
         title: "Select Box Fields",
-        fields: [<BasicMultiSelectBoxField />],
+        fields: [<BasicMultiSelectBoxField />, <BasicSingleSelectBoxField />],
       }
     ],
   };
