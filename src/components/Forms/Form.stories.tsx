@@ -56,6 +56,24 @@ const BasicMultiLineField = () => {
   return <TextField {...textFieldProps} />;
 };
 
+export const TextFields = () => {
+  const formProps: FormProps = {
+    sections: [
+      {
+        title: "Text Fields",
+        subtitle: "Additional information about this section",
+        fields: [<BasicTextField />, <BasicMultiLineField />],
+      }
+    ],
+  };
+
+  return (
+    <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+      <Form {...formProps} />
+    </ArtisanUXProvider>
+  );
+};
+
 const BasicSingleSelectField = () => {
   const [value, setValue] = useState<string>(null);
 
@@ -120,88 +138,14 @@ const BasicMultiSelectField = () => {
   return <MultiSelectField {...fieldProps} />;
 };
 
-const BasicIntegerField = () => {
-  const [value, setValue] = useState<number>(null);
-
-  const props: IntegerFieldProps = {
-    id: "basic_integer_field",
-    label: "Enter integer...",
-    value: value,
-    onChange: setValue,
-  };
-
-  return <IntegerField {...props} />;
-};
-
-const BasicFloatField = () => {
-  const [value, setValue] = useState<number>(null);
-
-  const props: IntegerFieldProps = {
-    id: "basic_float_field",
-    label: "Enter float...",
-    value: value,
-    onChange: setValue,
-  };
-
-  return <FloatField {...props} />;
-};
-
-const BasicDateField = () => {
-  const [value, setValue] = useState<string>(null);
-
-  const props: DateFieldProps = {
-    id: "basic_date_field",
-    label: "Enter a date...",
-    value: value,
-    onChange: setValue,
-    helpText: Boolean(value) && moment(value).format('MMM D YYYY')
-  };
-
-  return <DateField {...props} />;
-};
-
-const BasicDateRangeField = () => {
-  const [value, setValue] = useState<DateRangeValue>({ startDate: null, endDate: null });
-
-  const props: DateRangeFieldProps = {
-    id: "basic_date_field",
-    value: value,
-    onChange: setValue,
-    autoAdjustInvalidDates: true,
-    labels: {
-      startDateLabel: "Starting on...",
-      endDateLabel: "Ending on..."
-    },
-    helpTexts: {
-      startDateHelpText: value.startDate && moment(value.startDate).format('MMM D YYYY'),
-      endDateHelpText: value.endDate && moment(value.endDate).format('MMM D YYYY')
-    }
-  };
-
-  return <DateRangeField {...props} />;
-}
-
-export const ComprehensiveForm = () => {
+export const SelectFields = () => {
   const formProps: FormProps = {
     sections: [
-      {
-        title: "Text Fields",
-        subtitle: "Additional information about this section",
-        fields: [<BasicTextField />, <BasicMultiLineField />],
-      },
       {
         title: "Select Fields",
         subtitle: "This field contains our select fields",
         fields: [<BasicSingleSelectField />, <BasicMultiSelectField />],
-      },
-      {
-        title: "Number Fields",
-        fields: [<BasicIntegerField />, <BasicFloatField />],
-      },
-      {
-        title: "Date Fields",
-        fields: [<BasicDateField />, <BasicDateRangeField />]
-      },
+      }
     ],
   };
 
@@ -271,8 +215,103 @@ export const SelectBoxFields = () => {
   };
 
   return (
-      <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
-        <Form {...formProps} />
-      </ArtisanUXProvider>
+    <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+      <Form {...formProps} />
+    </ArtisanUXProvider>
+  );
+};
+
+const BasicIntegerField = () => {
+  const [value, setValue] = useState<number>(null);
+
+  const props: IntegerFieldProps = {
+    id: "basic_integer_field",
+    label: "Enter integer...",
+    value: value,
+    onChange: setValue,
+  };
+
+  return <IntegerField {...props} />;
+};
+
+const BasicFloatField = () => {
+  const [value, setValue] = useState<number>(null);
+
+  const props: IntegerFieldProps = {
+    id: "basic_float_field",
+    label: "Enter float...",
+    value: value,
+    onChange: setValue,
+  };
+
+  return <FloatField {...props} />;
+};
+
+export const NumberFields = () => {
+  const formProps: FormProps = {
+    sections: [
+      {
+        title: "Number Fields",
+        fields: [<BasicIntegerField />, <BasicFloatField />],
+      }
+    ],
+  };
+
+  return (
+    <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+      <Form {...formProps} />
+    </ArtisanUXProvider>
+  );
+};
+
+const BasicDateField = () => {
+  const [value, setValue] = useState<string>(null);
+
+  const props: DateFieldProps = {
+    id: "basic_date_field",
+    label: "Enter a date...",
+    value: value,
+    onChange: setValue,
+    helpText: Boolean(value) && moment(value).format('MMM D YYYY')
+  };
+
+  return <DateField {...props} />;
+};
+
+const BasicDateRangeField = () => {
+  const [value, setValue] = useState<DateRangeValue>({ startDate: null, endDate: null });
+
+  const props: DateRangeFieldProps = {
+    id: "basic_date_field",
+    value: value,
+    onChange: setValue,
+    autoAdjustInvalidDates: true,
+    labels: {
+      startDateLabel: "Starting on...",
+      endDateLabel: "Ending on..."
+    },
+    helpTexts: {
+      startDateHelpText: value.startDate && moment(value.startDate).format('MMM D YYYY'),
+      endDateHelpText: value.endDate && moment(value.endDate).format('MMM D YYYY')
+    }
+  };
+
+  return <DateRangeField {...props} />;
+}
+
+export const DateFields = () => {
+  const formProps: FormProps = {
+    sections: [
+      {
+        title: "Date Fields",
+        fields: [<BasicDateField />, <BasicDateRangeField />]
+      },
+    ],
+  };
+
+  return (
+    <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+      <Form {...formProps} />
+    </ArtisanUXProvider>
   );
 };
