@@ -2,13 +2,13 @@ import React from "react";
 import {RepeaterProps} from "./Repeater.types";
 import Grid from "@mui/material/Unstable_Grid2";
 import RepeaterUnit from "./RepeaterUnit";
+import {Button} from "@mui/material";
 
 function Repeater<T>(props: RepeaterProps<T>) {
   const {
     values,
       blankValue,
       onValuesChange,
-      onValidate,
       fields
   } = props;
 
@@ -20,8 +20,8 @@ function Repeater<T>(props: RepeaterProps<T>) {
     onValuesChange(newValues);
   }
 
-  const onBlankValueChange = (index: number, newValue: T) => {
-    const newValues = [...values, newValue];
+  const onBlankValueAdd = () => {
+    const newValues = [...values, {...blankValue}];
     onValuesChange(newValues);
   }
 
@@ -35,7 +35,6 @@ function Repeater<T>(props: RepeaterProps<T>) {
               <RepeaterUnit
                   index={index}
                   value={value}
-                  validate={onValidate}
                   onChange={onValueChange}
                   fields={fields}
               />
@@ -45,13 +44,15 @@ function Repeater<T>(props: RepeaterProps<T>) {
       }
 
       <Grid item xs={12}>
-        <RepeaterUnit
-            index={values.length + 1}
-            value={blankValue}
-            validate={onValidate}
-            onChange={onBlankValueChange}
-            fields={fields}
-        />
+        <Button
+          fullWidth={true}
+          color={"primary"}
+          variant={"contained"}
+          onClick={onBlankValueAdd}
+          disableElevation={true}
+        >
+          Add
+        </Button>
       </Grid>
     </Grid>
   )

@@ -11,7 +11,7 @@ import {
 import SingleSelectField from "./FormFields/selectFields/SingleSelectField";
 import MultiSelectField from "./FormFields/selectFields/MultiSelectField";
 import { ArtisanUXProvider } from "../Provider";
-import { IntegerFieldProps } from "./FormFields/numberFields/NumberField.types";
+import {FloatFieldProps, IntegerFieldProps} from "./FormFields/numberFields/NumberField.types";
 import IntegerField from "./FormFields/numberFields/IntegerField";
 import FloatField from "./FormFields/numberFields/FloatField";
 import {DateFieldProps, DateRangeFieldProps, DateRangeValue} from './FormFields/dateFields/DateField.types';
@@ -21,6 +21,8 @@ import * as moment from "moment";
 import {MultiSelectBoxFieldProps, SingleSelectBoxFieldProps} from "./FormFields/selectBoxFields/SelectBoxFields.types";
 import MultiSelectBoxField from "./FormFields/selectBoxFields/MultiSelectBoxField";
 import SingleSelectBoxField from "./FormFields/selectBoxFields/SingleSelectBoxField";
+import {RepeaterProps, RepeaterUnitFieldProps} from "./repeaters/Repeater.types";
+import Repeater from "./repeaters/Repeater";
 
 const meta = {
   title: "ArtisanUX/Forms",
@@ -315,3 +317,81 @@ export const DateFields = () => {
     </ArtisanUXProvider>
   );
 };
+
+
+interface InventoryItem {
+  unitPrice: number;
+  quantity: number;
+}
+
+const BasicRepeaterField = () => {
+  const [values, setValues] = useState<Array<InventoryItem>>([]);
+
+  const quantityField = (props: RepeaterUnitFieldProps<InventoryItem>) => {
+    const onQuantityChange = (quantity: number) => {
+      props.onValueChange({...props.value, quantity: quantity});
+    }
+
+    const fieldProps: IntegerFieldProps = {
+      id: `quantity`,
+      value: props.value.quantity,
+      onChange: onQuantityChange
+    }
+
+    return <IntegerField {...fieldProps} />
+  }
+
+  const unitPriceField = (props: RepeaterUnitFieldProps<InventoryItem>) => {
+    const onUnitPriceChange = (price: number) => {
+      props.onValueChange({...props.value, unitPrice: price});
+    }
+
+    const fieldProps: FloatFieldProps = {
+      id: `unit_price`,
+      value: props.value.unitPrice,
+      onChange: onUnitPriceChange
+    }
+
+    return <FloatField {...fieldProps} />
+  }
+
+  const repeaterProps: RepeaterProps<InventoryItem> = {
+    values: values,
+    blankValue: {
+      quantity: 0,
+      unitPrice: 0,
+    },
+    onValuesChange: setValues,
+    fields: [
+      {
+        colspan: 6,
+        fieldName: "quantity",
+        Component: quantityField
+      },
+      {
+        colspan: 6,
+        fieldName: "unitPrice",
+        Component: unitPriceField
+      }
+    ]
+  }
+
+  return <Repeater {...repeaterProps} />;
+}
+
+export const Repeaters = () => {
+  const formProps: FormProps = {
+    sections: [
+      {
+        title: "Repeaters",
+        fields: [<BasicRepeaterField />]
+      },
+    ],
+  };
+
+  return (
+      <ArtisanUXProvider primaryColor={{ main: "#9e2d0b" }}>
+        <Form {...formProps} />
+      </ArtisanUXProvider>
+  );
+}
