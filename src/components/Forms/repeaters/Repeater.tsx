@@ -6,6 +6,7 @@ import {Button} from "@mui/material";
 
 function Repeater<T>(props: RepeaterProps<T>) {
   const {
+    id,
     values,
       blankValue,
       onValuesChange,
@@ -29,9 +30,10 @@ function Repeater<T>(props: RepeaterProps<T>) {
     <Grid container spacing={4}>
       {
         values.map((value, index) => {
+          console.log(`${id}_${index}`);
 
           return (
-            <Grid item xs={12}>
+            <Grid xs={12} key={`${id}_${index}`}>
               <RepeaterUnit
                   index={index}
                   value={value}
@@ -43,7 +45,7 @@ function Repeater<T>(props: RepeaterProps<T>) {
         })
       }
 
-      <Grid item xs={12}>
+      <Grid xs={12}>
         <Button
           fullWidth={true}
           color={"primary"}

@@ -19,6 +19,7 @@ export interface RepeaterUnitProps<T> {
 }
 
 export interface RepeaterProps<T> {
+  id: string;
   values: Array<T>;
   blankValue: T;
   onValuesChange: (newValues: Array<T>) => void;

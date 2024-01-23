@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {RepeaterUnitProps} from "./Repeater.types";
 import Grid from "@mui/material/Unstable_Grid2";
 
@@ -18,9 +18,10 @@ function RepeaterUnit<T>(props: RepeaterUnitProps<T>) {
     <Grid container spacing={2}>
       {
         fields.map(field => {
+          console.log(`${field.fieldName}_${index}`)
 
           return (
-            <Grid item xs={field.colspan} key={`${field.fieldName}_${index}`}>
+            <Grid xs={field.colspan} key={`${field.fieldName}_${index}`}>
               <field.Component value={value} onValueChange={onFieldChange} />
             </Grid>
           )

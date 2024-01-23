@@ -322,6 +322,7 @@ export const DateFields = () => {
 interface InventoryItem {
   unitPrice: number;
   quantity: number;
+  name: string;
 }
 
 const BasicRepeaterField = () => {
@@ -355,23 +356,44 @@ const BasicRepeaterField = () => {
     return <FloatField {...fieldProps} />
   }
 
+  const unitNameField = (props: RepeaterUnitFieldProps<InventoryItem>) => {
+    const onNameChange = (name: string) => {
+      props.onValueChange({...props.value, name: name});
+    }
+
+    const fieldProps: TextFieldProps = {
+      id: `name`,
+      value: props.value.name,
+      onChange: onNameChange
+    };
+
+    return <TextField {...fieldProps} />;
+  }
+
   const repeaterProps: RepeaterProps<InventoryItem> = {
+    id: "inventory_item_list",
     values: values,
     blankValue: {
       quantity: 0,
       unitPrice: 0,
+      name: "",
     },
     onValuesChange: setValues,
     fields: [
       {
-        colspan: 6,
+        colspan: 4,
         fieldName: "quantity",
         Component: quantityField
       },
       {
-        colspan: 6,
+        colspan: 4,
         fieldName: "unitPrice",
         Component: unitPriceField
+      },
+      {
+        colspan: 4,
+        fieldName: "unitName",
+        Component: unitNameField
       }
     ]
   }
