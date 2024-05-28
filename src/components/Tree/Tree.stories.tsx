@@ -1,16 +1,14 @@
-import Tree from './Tree';
-import {TreeProps} from "./Tree.types";
+import Tree from "./Tree";
+import { TreeProps } from "./Tree.types";
 
 const meta = {
   component: Tree,
-  title: "ArtisanUX/Tree"
-}
+  title: "ArtisanUX/Tree",
+};
 
 export default meta;
 
-export const Basic = (args: TreeProps) => (
-  <Tree {...args} />
-)
+export const Basic = (args: TreeProps) => <Tree {...args} />;
 
 Basic.args = {
   treeID: "basic-tree",
@@ -19,22 +17,20 @@ Basic.args = {
       adapter: {
         id: "item1",
         primaryText: "Item 1",
-        secondaryText: "Item 1 was our first item"
-      }
+        secondaryText: "Item 1 was our first item",
+      },
     },
     {
       adapter: {
         id: "item2",
         primaryText: "Item 2",
-        secondaryText: "Second item"
-      }
-    }
-  ]
-}
+        secondaryText: "Second item",
+      },
+    },
+  ],
+};
 
-export const NestedList = (args: TreeProps) => (
-  <Tree {...args} />
-)
+export const NestedList = (args: TreeProps) => <Tree {...args} />;
 
 NestedList.args = {
   treeID: "nested-tree",
@@ -43,15 +39,15 @@ NestedList.args = {
       adapter: {
         id: "item1",
         primaryText: "Item 1",
-        secondaryText: "Item 1 was our first item"
-      }
+        secondaryText: "Item 1 was our first item",
+      },
     },
     {
       adapter: {
         id: "item2",
         primaryText: "Item 2",
-        secondaryText: "Second item"
-      }
+        secondaryText: "Second item",
+      },
     },
     {
       adapter: {
@@ -62,25 +58,23 @@ NestedList.args = {
             adapter: {
               id: "item1-1",
               primaryText: "Subitem 1",
-              secondaryText: "Summary sentence sub1"
-            }
+              secondaryText: "Summary sentence sub1",
+            },
           },
           {
             adapter: {
               id: "item1-2",
               primaryText: "Subitem 2",
-              secondaryText: "Summary sentence sub2"
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
+              secondaryText: "Summary sentence sub2",
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
 
-export const DraggableTree = (args: TreeProps) => (
-    <Tree {...args} />
-)
+export const DraggableTree = (args: TreeProps) => <Tree {...args} />;
 
 DraggableTree.args = {
   treeID: "draggable-tree",
@@ -89,7 +83,7 @@ DraggableTree.args = {
       adapter: {
         id: "item1",
         primaryText: "Item 1",
-        secondaryText: "Item 1 was our first item"
+        secondaryText: "Item 1 was our first item",
       },
       dragDropAdapter: {
         itemID: "item1",
@@ -97,18 +91,19 @@ DraggableTree.args = {
         dragData: {
           itemID: 1,
           payload: {
-            name: "Item 1"
-          }
+            name: "Item 1",
+          },
         },
         canDrop: (droppedItemDragData) => true,
-        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 1`)
-      }
+        onDrop: (droppedItemDragData) =>
+          alert(`Dropped item ${droppedItemDragData.payload.name} on Item 1`),
+      },
     },
     {
       adapter: {
         id: "item2",
         primaryText: "Item 2",
-        secondaryText: "Second item"
+        secondaryText: "Second item",
       },
       dragDropAdapter: {
         itemID: "item2",
@@ -116,18 +111,19 @@ DraggableTree.args = {
         dragData: {
           itemID: 2,
           payload: {
-            name: "Item 2"
-          }
+            name: "Item 2",
+          },
         },
         canDrop: (droppedItemDragData) => true,
-        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 2`)
-      }
+        onDrop: (droppedItemDragData) =>
+          alert(`Dropped item ${droppedItemDragData.payload.name} on Item 2`),
+      },
     },
     {
       adapter: {
         id: "item3",
         primaryText: "Item 3",
-        secondaryText: "Third item"
+        secondaryText: "Third item",
       },
       dragDropAdapter: {
         itemID: "item3",
@@ -135,19 +131,18 @@ DraggableTree.args = {
         dragData: {
           itemID: 3,
           payload: {
-            name: "Item 3"
-          }
+            name: "Item 3",
+          },
         },
         canDrop: (droppedItemDragData) => true,
-        onDrop: (droppedItemDragData) => alert(`Dropped item ${droppedItemDragData.payload.name} on Item 3`)
-      }
-    }
-  ]
-}
+        onDrop: (droppedItemDragData) =>
+          alert(`Dropped item ${droppedItemDragData.payload.name} on Item 3`),
+      },
+    },
+  ],
+};
 
-export const ActionTree = (args: TreeProps) => (
-    <Tree {...args} />
-)
+export const ActionTree = (args: TreeProps) => <Tree {...args} />;
 
 ActionTree.args = {
   treeID: "nested-tree",
@@ -160,14 +155,14 @@ ActionTree.args = {
         actions: [
           {
             label: "Cut",
-            onClick: () => alert("Finished cutting apple")
+            onClick: () => alert("Finished cutting apple"),
           },
           {
             label: "Mash",
-            onClick: () => alert("Mashed into apple sauce")
-          }
-        ]
-      }
+            onClick: () => alert("Mashed into apple sauce"),
+          },
+        ],
+      },
     },
     {
       adapter: {
@@ -177,21 +172,19 @@ ActionTree.args = {
         actions: [
           {
             label: "Peel",
-            onClick: () => alert("Naked banana")
+            onClick: () => alert("Naked banana"),
           },
           {
             label: "Throw on ground",
-            onClick: () => alert("User slipped!")
-          }
-        ]
-      }
-    }
-  ]
-}
+            onClick: () => alert("User slipped!"),
+          },
+        ],
+      },
+    },
+  ],
+};
 
-export const Pending = (args: TreeProps) => (
-    <Tree {...args} />
-)
+export const Pending = (args: TreeProps) => <Tree {...args} />;
 
 Pending.args = {
   treeID: "basic-pending",
@@ -201,22 +194,20 @@ Pending.args = {
       adapter: {
         id: "item1",
         primaryText: "Item 1",
-        secondaryText: "Item 1 was our first item"
-      }
+        secondaryText: "Item 1 was our first item",
+      },
     },
     {
       adapter: {
         id: "item2",
         primaryText: "Item 2",
-        secondaryText: "Second item"
-      }
-    }
-  ]
-}
+        secondaryText: "Second item",
+      },
+    },
+  ],
+};
 
-export const ClickableItems = (args: TreeProps) => (
-  <Tree {...args} />
-)
+export const ClickableItems = (args: TreeProps) => <Tree {...args} />;
 
 ClickableItems.args = {
   treeID: "clickable-items",
@@ -227,9 +218,9 @@ ClickableItems.args = {
         primaryText: "Hyperlink",
         secondaryText: "Click title to navigate to Basic tree",
         primaryAction: {
-          navigateToURL: "/?path=/story/artisanux-tree--basic"
-        }
-      }
+          navigateToURL: "/?path=/story/artisanux-tree--basic",
+        },
+      },
     },
     {
       adapter: {
@@ -237,9 +228,9 @@ ClickableItems.args = {
         primaryText: "Click action",
         secondaryText: "Click title to see alert message",
         primaryAction: {
-          clickAction: () => alert("Clicked item 2")
-        }
-      }
-    }
-  ]
-}
+          clickAction: () => alert("Clicked item 2"),
+        },
+      },
+    },
+  ],
+};

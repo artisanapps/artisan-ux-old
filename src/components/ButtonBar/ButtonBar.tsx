@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button} from '@mui/material';
+import React from "react";
+import { Button } from "@mui/material";
 
 export interface ButtonProps {
   label: string;
@@ -23,7 +23,7 @@ const ButtonBar = (props: ButtonBarProps) => {
     leftContent,
     endContent,
     disabled,
-    disableButtonStyling
+    disableButtonStyling,
   } = props;
 
   const buttonCount = buttons.length;
@@ -39,9 +39,9 @@ const ButtonBar = (props: ButtonBarProps) => {
         const isLast: boolean = index + 1 === buttonCount;
 
         let variant: "outlined" | "contained" = "outlined";
-        if(!disableButtonStyling) {
-          if(leftAlign) {
-            if(index === 0) {
+        if (!disableButtonStyling) {
+          if (leftAlign) {
+            if (index === 0) {
               variant = "contained";
             }
           } else if (isLast) {
@@ -57,7 +57,7 @@ const ButtonBar = (props: ButtonBarProps) => {
             color={"primary"}
             style={{
               marginRight: isLast ? "0rem" : "0.5rem",
-              textTransform: "none"
+              textTransform: "none",
             }}
             disabled={disabled || buttonProps.disabled}
             disableElevation={true}
@@ -65,10 +65,10 @@ const ButtonBar = (props: ButtonBarProps) => {
           >
             {buttonProps.label}
           </Button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 export default ButtonBar;
